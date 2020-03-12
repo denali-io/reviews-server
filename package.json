@@ -1,0 +1,31 @@
+{
+  "name": "reviews-server",
+  "description": "> Project description",
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "scripts": {},
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Denali-Outdoors/reviews-server.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Denali-Outdoors/reviews-server/issues"
+  },
+  "homepage": "https://github.com/Denali-Outdoors/reviews-server#readme"
+}
