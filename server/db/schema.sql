@@ -33,6 +33,19 @@ CREATE TABLE `users` (
 INSERT INTO users (name) VALUES ('name1');
 INSERT INTO users (name) VALUES ('name2');  
 
+DROP TABLE IF EXISTS photos;
+
+CREATE TABLE `photos` (
+    `photo_id` INTEGER AUTO_INCREMENT,
+    `id_review` INTEGER,
+    `photo_url` VARCHAR(300),
+    primary key (`photo_id`)
+);
+
+INSERT INTO photos (id_review, photo_url) VALUES (10, 'fsfsdfsfdssf');
+INSERT INTO photos (id_review, photo_url) VALUES (1, 'f!!!!!!!!!!!sfdssf');
+
+
 DROP TABLE IF EXISTS reviews;
 
 CREATE TABLE `reviews` (

@@ -9,7 +9,9 @@ const connection = mysql.createConnection(mysqlConfig)
 // define functions to extract and update data
 
 // const getReviewsByRestId = function (restaurauntId, callback)
-
+    // InnerJoins
+    // InnerJoins
+    // InnerJoins
 // const updateVoteByReviewId = function (reviewId, category, callback)
 
 
@@ -17,3 +19,5 @@ const connection = mysql.createConnection(mysqlConfig)
     // getReviews = getReviewsByRestId,
     // updateVote = updateVoteByReviewId
 // }
+
+module.exports.connection = connection;
