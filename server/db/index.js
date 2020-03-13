@@ -13,8 +13,17 @@ connection.connect((err) => {
     }
 })
 
+// SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId});
+// SELECT rating FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.rating DESC;
 const getReviews = function(businessId, start, sort, search, callback) {
-    console.log(businessId, start, sort, search, 'FROM DATABASE')
+    
+    if (sort === 'rating_desc') {
+        sort = 'ORDER BY reviews.rating DESC'
+    } else if (sort === 'rating_asc') {
+        sort = 'ORDER BY reviews.rating ASC'
+    }
+    console.log(sort, 'FROM DATABASE')
+    let queryString = 'SELECT * FROM reviews INNERJOIN'
 
 }
 
