@@ -120,14 +120,9 @@ const configureDB = () => {
                     usersCheckedIn.push(currentUser)
 
 
-// DATE
-
-                    // generate a fake name
-                    // let fakeDate = (fake.date.between('2015-01-01', '2020-3-01').toDateString().split(' '))
-                    // fakeDate.shift()
-                    // fakeDate = (fakeDate.join('/'))
+                    // FAKE DATE
                     let fakeDate = randomDate()
-                    console.log(fakeDate, 'LOOOOOK HEEEEERE!!!!!!!!!')
+                    
 
 
 

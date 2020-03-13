@@ -14,20 +14,35 @@ connection.connect((err) => {
 })
 
 // SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId});
+
+// order reviews by highest rating
 // SELECT rating FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.rating DESC;
+
+// order reviews by most recent
+// SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;
+
+
 const getReviews = function(businessId, start, sort, search, callback) {
     
     if (sort === 'rating_desc') {
         sort = 'ORDER BY reviews.rating DESC'
     } else if (sort === 'rating_asc') {
         sort = 'ORDER BY reviews.rating ASC'
-    }
-    console.log(sort, 'FROM DATABASE')
-    let queryString = 'SELECT * FROM reviews INNERJOIN'
+    } 
+    
+    let qString = `SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;`
+    connection.query(qString, (err, results) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(results)
+        }
+    })
+    // let queryString = 'SELECT * FROM reviews INNERJOIN'
 
 }
 
-
+getReviews()
 
 // define functions to extract and update data
 
