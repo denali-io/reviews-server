@@ -6,8 +6,11 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "populate": "node ./server/db/seeds"
+  },
   "dependencies": {
+    "bluebird": "^3.7.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mysql": "^2.18.1"

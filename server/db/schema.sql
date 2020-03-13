@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Restaurants;
 
 CREATE TABLE `Restaurants` (
     `id` INTEGER AUTO_INCREMENT,
-    `name` VARCHAR(30) DEFAULT NULL,
+    `name` VARCHAR(200) DEFAULT NULL,
     PRIMARY KEY(`id`)
 );
 
@@ -50,11 +50,11 @@ DROP TABLE IF EXISTS reviews;
 
 CREATE TABLE `reviews` (
     `review_id` INTEGER AUTO_INCREMENT,
-    `id_User table` INTEGER NULL DEFAULT NULL,
+    `id_User` INTEGER NULL DEFAULT NULL,
     `id_Restaurants` INTEGER NULL DEFAULT NULL,
-    `date` DATE DEFAULT NULL,
+    `date` VARCHAR(20) DEFAULT NULL,
     `rating` INTEGER NOT NULL,
-    `body` TEXT NOT NULL,
+    `body` TEXT,
     `useful_count` INTEGER NULL DEFAULT 0,
     `cool_count` INTEGER NULL DEFAULT 0,
     `funny_count` INTEGER NULL DEFAULT 0,
@@ -62,5 +62,6 @@ CREATE TABLE `reviews` (
     PRIMARY KEY(`review_id`)
 );
 
-INSERT INTO `reviews` (rating, body) VALUES (3, 'gddgssdgsggdsgsgsgsgdssssgsgs');
-INSERT INTO `reviews` (rating, body) VALUES (5, 'gddgssdgsgsgdsdsgsgdsggsgsdgsgsgs');
+DROP TABLE IF EXISTS reviewPhotos;
+
+CREATE TABLE `reviewPhotos`

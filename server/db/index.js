@@ -3,8 +3,17 @@ const mysql = require('mysql')
 // import config for connection
 const mysqlConfig = require('./config.js')
 
+
 // create connection
-const connection = mysql.createConnection(mysqlConfig)
+const connection = mysql.createConnection(mysqlConfig);
+
+connection.connect((err) => {
+    if (err) {
+        console.log('FAILED TO CONNECT TO DB');
+    } else {
+        console.log('CONNECTED TO DB')
+    }
+})
 
 // define functions to extract and update data
 
