@@ -96,7 +96,7 @@ const configureDB = () => {
         for (let restaurantId = 1; restaurantId < 101; restaurantId++) {
             // create user collection to prevent repeats
             let usersCheckedIn = [];
-            let numOfReviews = 1// getNumOfReviews()
+            let numOfReviews = 10// getNumOfReviews()
             for (let i = 0; i < numOfReviews; i++) {
                 // generate a fake userId between 1 & 2000
                 let currentUser = getNewUserId()
@@ -111,9 +111,10 @@ const configureDB = () => {
                     // generate a fake rating (integer 1 - 5)
                     let rating = fake.random.number({'min': 1, 'max': 5})
                     // generate a fake body of text
-                    let numOfParagraphs = (Math.floor(Math.random() * 4) + 1)
-                    let reviewBody = fake.lorem.paragraphs(numOfParagraphs, '\n  ')
-                    
+                    // let numOfParagraphs = (Math.floor(Math.random() * 4) + 2)
+                    // let reviewBody = fake.lorem.paragraphs(numOfParagraphs)
+                    let reviewBody = fake.lorem.sentences(20)
+                    // let reviewBody = fake.lorem.sentences(10)
                     // generate a fake "useful" count (0 - 4)
                     let usefulCount = fake.random.number({'min': 1, 'max': 9})
                     // generate a fake "funny" count (0 - 4)
@@ -147,7 +148,7 @@ const configureDB = () => {
 }
 
 configureDB()
-
+console.log('??')
 
     //CREATE N EXT ABLES
     // CREATE REVIEWS TABLES

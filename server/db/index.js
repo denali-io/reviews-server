@@ -2,8 +2,6 @@
 const mysql = require('mysql')
 // import config for connection
 const mysqlConfig = require('./config.js')
-
-
 // create connection
 const connection = mysql.createConnection(mysqlConfig);
 
@@ -14,6 +12,13 @@ connection.connect((err) => {
         console.log('CONNECTED TO DB')
     }
 })
+
+const getReviews = function(businessId, start, sort, search, callback) {
+    console.log(businessId, start, sort, search, 'FROM DATABASE')
+
+}
+
+
 
 // define functions to extract and update data
 
@@ -30,3 +35,4 @@ connection.connect((err) => {
 // }
 
 module.exports.connection = connection;
+module.exports.getReviews = getReviews;
