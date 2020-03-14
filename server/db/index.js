@@ -56,14 +56,14 @@ const getReviews = function(businessId, start = '', sort = null, search = null, 
     
    
     let queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId}${search}) ${sort};`
-    console.log(queryString)
+    
     
     // let qString = `SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;`
-    connection.query(queryString, (err, results) => {
+    connection.query(queryString, callback, (err, results) => {
         if (err) {
-            console.log(err)
+            callback(err)
         } else {
-            console.log(results)
+            callback(results)
         }
     })
     
