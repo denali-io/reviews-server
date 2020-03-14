@@ -10,15 +10,21 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurants/:restaurantId', (req, res) => {
-    console.log(req.params)
+    
     let restaurant = req.params.restaurantId
     
     let start = parseInt(req.query.start)
     let sort = req.query.sort_by
     let search = req.query.q
-    db.getReviews(restaurant, start, sort, search)
+    db.getReviews(restaurant, start, sort, search, (err, results) => {
+        if (err) {
+            res.sendStatus(401)
+        } else {
+            res.send(results)
+        }
+    })
     
-    res.send('searched')
+    
 })
 
 app.listen(port, () => console.log(`SQUAWK listening on port ${port}!`))

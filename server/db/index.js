@@ -13,8 +13,60 @@ connection.connect((err) => {
     }
 })
 
-const getReviews = function(businessId, start, sort, search, callback) {
-    console.log(businessId, start, sort, search, 'FROM DATABASE')
+// SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId});
+
+// order reviews by highest rating
+// SELECT rating FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.rating DESC;
+
+// order reviews by most recent
+
+// `SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;`
+
+// SEARCH TEXT for latin words
+// SELECT body FROM reviews WHERE body LIKE '%maxime eum%';
+
+// SEARCH TEXT for 'nihil' and order reviews by descending rating
+// SELECT rating FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44 AND body LIKE '%nihil%') ORDER BY reviews.rating DESC;
+
+// SEARCH TEXT for 'nihil' and order reviews by descending date
+//SELECT rating FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44 AND body LIKE '%nihil%') ORDER BY reviews.date DESC;
+
+
+const getReviews = function(businessId, start = '', sort = null, search = null, callback) {
+    
+    if (sort !== null) {
+        if (sort === 'rating_desc') {
+            sort = 'ORDER BY reviews.rating DESC'
+        } else if (sort === 'rating_asc') {
+            sort = 'ORDER BY reviews.rating ASC'
+        } else if (sort === 'date_asc') {
+            sort = 'ORDER BY reviews.date ASC'
+        } else if (sort === 'date_desc') {
+            sort = 'ORDER BY reviews.date DESC'
+        }
+    } else {
+        sort = ''
+    }
+
+    if (search !== null) {
+        search = ` AND body LIKE '%${search}%'`
+    } else {
+        search = ''
+    }
+    
+   
+    let queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId}${search}) ${sort};`
+    
+    
+    // let qString = `SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;`
+    connection.query(queryString, callback, (err, results) => {
+        if (err) {
+            callback(err)
+        } else {
+            callback(results)
+        }
+    })
+    
 
 }
 
