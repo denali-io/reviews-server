@@ -1,36 +1,34 @@
-const express = require('express')
-const path = require('path')
+/* eslint-disable radix */
+const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
+
 const app = express();
-const db = require('./db')
+const db = require('./db');
 // console.log(db.getReviews)
-port = 5000
+const port = 5000;
 
-app.use(express.static(path.join(__dirname, '../client/public')))
-
-
+app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(bodyParser);
 
 
 app.get('/', (req, res) => {
-    res.send('HELLO FROM SQUAWK!!!')
-})
+  res.send('HELLO FROM SQUAWK!!!');
+});
 
 app.get('/restaurants/:restaurantId', (req, res) => {
-    
-    let restaurant = req.params.restaurantId
-    
-    let start = parseInt(req.query.start)
-    let sort = req.query.sort_by
-    let search = req.query.q
-    db.getReviews(restaurant, start, sort, search, (err, results) => {
-        if (err) {
-            res.sendStatus(401)
-        } else {
-            console.log(results)
-        }
-    })
-    
-    
-})
+  const restaurant = req.params.restaurantId;
 
-app.listen(port, () => console.log(`SQUAWK listening on port ${port}!`))
+  const start = parseInt(req.query.start);
+  const sort = req.query.sort_by;
+  const search = req.query.q;
+  db.getReviews(restaurant, start, sort, search, (err, results) => {
+    if (err) {
+      res.sendStatus(401);
+    } else {
+      console.log(results);
+    }
+  });
+});
+
+app.listen(port, () => console.log(`SQUAWK listening on port ${port}!`));
