@@ -55,7 +55,7 @@ const getReviews = function(businessId, start = '', sort = null, search = null, 
     }
     
    
-    let queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId}${search}) ${sort};`
+    let queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId}${search});`
     
     
     // let qString = `SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;`
@@ -63,7 +63,7 @@ const getReviews = function(businessId, start = '', sort = null, search = null, 
         if (err) {
             callback(err)
         } else {
-            callback(results)
+            callback(null, results)
         }
     })
     
