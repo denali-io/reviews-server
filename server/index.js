@@ -1,9 +1,15 @@
 const express = require('express')
+const path = require('path')
 const bodyParser = require('body-parser');
 const app = express();
 const db = require('./db')
 // console.log(db.getReviews)
 port = 5000
+
+app.use(express.static(path.join(__dirname, '../client/public')))
+
+
+
 
 app.get('/', (req, res) => {
     res.send('HELLO FROM SQUAWK!!!')
@@ -20,7 +26,7 @@ app.get('/restaurants/:restaurantId', (req, res) => {
         if (err) {
             res.sendStatus(401)
         } else {
-            res.send(results)
+            console.log(results)
         }
     })
     
