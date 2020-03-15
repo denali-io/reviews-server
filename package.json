@@ -8,7 +8,8 @@
   },
   "scripts": {
     "populate": "node ./server/db/seeds",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/index.js",
+    "react-dev": "webpack -w"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
@@ -19,6 +20,9 @@
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "babel-loader": "^8.0.6",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
