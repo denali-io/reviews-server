@@ -9,7 +9,7 @@ const db = require('./db');
 const port = 5000;
 
 app.use(express.static(path.join(__dirname, '../client/public')));
-app.use(bodyParser);
+// app.use(bodyParser);
 
 
 app.get('/', (req, res) => {
@@ -18,15 +18,15 @@ app.get('/', (req, res) => {
 
 app.get('/restaurants/:restaurantId', (req, res) => {
   const restaurant = req.params.restaurantId;
-
+    console.log(parseInt(restaurant))
   const start = parseInt(req.query.start);
   const sort = req.query.sort_by;
   const search = req.query.q;
   db.getReviews(restaurant, start, sort, search, (err, results) => {
     if (err) {
-      res.sendStatus(401);
+      res.sendStatus(err);
     } else {
-      console.log(results);
+      res.send(results);
     }
   });
 });

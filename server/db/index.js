@@ -37,8 +37,9 @@ connection.connect((err) => {
 // WHERE (id_Restaurants = 44 AND body LIKE '%nihil%') ORDER BY reviews.date DESC;
 
 
-function getReviews(businessId, start = '', sort = null, search = null, callback) {
+function getReviews(businessId, start = null, sort = null, search = null, callback) {
   let sortBy = '';
+  console.log()
   if (sort !== null) {
     if (sort === 'rating_desc') {
       sortBy = 'ORDER BY reviews.rating DESC';
@@ -59,10 +60,18 @@ function getReviews(businessId, start = '', sort = null, search = null, callback
   } else {
     searchQuery = '';
   }
-
-  console.log(search, sortBy, start);
-  const queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId}${searchQuery});`;
-
+  let startQuery;
+  if (!isNaN(start)) {
+      startQuery = `LIMIT ${start}, 20`;
+  } else {
+      startQuery = `LIMIT 20`;
+  }
+  console.log('search', searchQuery)
+  console.log('start', startQuery)
+  console.log('sort', sort)
+//   const queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId}${searchQuery});`;
+//   if (start === 'LIMIT Na')
+  const queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE id_Restaurants = ${businessId}${searchQuery} ${sortBy} ${startQuery}`;
   // let qString =  `SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id)
   // WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;`
   connection.query(queryString, callback, (err, results) => {

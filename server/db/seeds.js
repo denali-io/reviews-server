@@ -14,7 +14,7 @@ function randomDate() {
   const year = Math.floor(Math.random() * 20) + 2000;
 
   const month = Math.floor(Math.random() * 8) + 1;
-  const monthString = (`0 ${month}`);
+  const monthString = ('0' + month);
   const day = Math.floor(Math.random() * 20) + 10;
 
   const dateString = (year + monthString + day);
@@ -31,15 +31,15 @@ function getNumOfReviews() {
 function getNewUserId() {
   return Math.floor(Math.random() * 2000) + 1;
 }
-console.log(getNumOfReviews);
+
 const configureDB = () => {
   Promise.promisifyAll(db.connection);
-  return db.connection.queryAsync('DROP DATABASE thirdSquawk;')
+  return db.connection.queryAsync('DROP DATABASE fifthSquawk;')
     .then(() => {
-      db.connection.queryAsync('CREATE DATABASE thirdSquawk')
+      db.connection.queryAsync('CREATE DATABASE fifthSquawk')
     })
     .then(() => {
-      db.connection.queryAsync('USE thirdSquawk;');
+      db.connection.queryAsync('USE fifthSquawk;');
     })
     .then(() => {
       // restaurants
@@ -72,19 +72,19 @@ const configureDB = () => {
             useful_count INTEGER,
             cool_count INTEGER,
             funny_count INTEGER,
-            check_ins INTEGER,
-            FOREIGN KEY (id_User) REFERENCES users(user_id),
-            FOREIGN KEY (id_Restaurants) REFERENCES restaurants(id)
+            check_ins INTEGER
         );`);
     })
     .then(() => {
+                    // ADD CONSTRAINT FOREIGN KEY (id_User) REFERENCES users(user_id),
+            // ADD CONSTRAINT FOREIGN KEY (id_Restaurants) REFERENCES restaurants(id)
       // images
-      db.connection.queryAsync(`CREATE TABLE images (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            url VARCHAR(50),
-            reviewID INT,
-            FOREIGN KEY (reviewID) REFERENCES reviews(review_id)
-            );`);
+    //   db.connection.queryAsync(`CREATE TABLE images (
+    //         id INT AUTO_INCREMENT PRIMARY KEY,
+    //         url VARCHAR(50),
+    //         reviewID INT,
+    //         FOREIGN KEY (reviewID) REFERENCES reviews(review_id)
+    //         );`);
     })
     .then(() => {
       // populate restaurants
