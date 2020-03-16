@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 app.get('/restaurants/:restaurantId', (req, res) => {
   const restaurant = req.params.restaurantId;
-    console.log(parseInt(restaurant))
+  
   const start = parseInt(req.query.start);
   const sort = req.query.sort_by;
   const search = req.query.q;
@@ -27,6 +27,23 @@ app.get('/restaurants/:restaurantId', (req, res) => {
       res.sendStatus(err);
     } else {
       res.send(results);
+    }
+  });
+});
+
+app.get('/reviewId/:reviewId', (req, res) => {
+// http://localhost:5000/reviews/9676?value=cool_count&status=true
+  const voteInfo = {
+    id: Number(req.params.reviewId),
+    voteType: req.query.value,
+    voted: req.query.voted,
+  };
+  console.log(voteInfo)
+  db.updateReviewVote(voteInfo, (err, results) => {
+    if (err) {
+        console.log(err);
+    } else {
+        res.send(results);
     }
   });
 });

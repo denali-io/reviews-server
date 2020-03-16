@@ -62,15 +62,15 @@ function getReviews(businessId, start = null, sort = null, search = null, callba
   }
   let startQuery;
   if (!isNaN(start)) {
-      startQuery = `LIMIT ${start}, 20`;
+    startQuery = `LIMIT ${start}, 20`;
   } else {
-      startQuery = `LIMIT 20`;
+    startQuery = 'LIMIT 20';
   }
-  console.log('search', searchQuery)
-  console.log('start', startQuery)
-  console.log('sort', sort)
+//   console.log('search', searchQuery)
+//   console.log('start', startQuery)
+//   console.log('sort', sort)
 //   const queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId}${searchQuery});`;
-//   if (start === 'LIMIT Na')
+
   const queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE id_Restaurants = ${businessId}${searchQuery} ${sortBy} ${startQuery}`;
   // let qString =  `SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id)
   // WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;`
@@ -83,13 +83,35 @@ function getReviews(businessId, start = null, sort = null, search = null, callba
   });
 }
 
+
 // define functions to extract and update data
 
 // const getReviewsByRestId = function (restaurauntId, callback)
-// InnerJoins
-// InnerJoins
-// InnerJoins
-// const updateVoteByReviewId = function (reviewId, category, callback)
+
+function updateReviewVote(reviewInfo, callback) {
+  console.log(reviewInfo, 'db');
+  let queryString;
+  if (reviewInfo.voted === 'true') {
+    queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType}+1 WHERE review_id=${reviewInfo.id}`;
+  } else {
+    queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType}-1 WHERE review_id=${reviewInfo.id}`;
+  }
+  connection.query(queryString, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const updatedInfoQuery = `SELECT * FROM reviews WHERE review_id = ${reviewInfo.id}`;
+      connection.query(updatedInfoQuery, (err, result) => {
+        if (err) {
+          console.log(err, 'second callback');
+        } else {
+          callback(null, result);
+        }
+      });
+    //   callback(null, results);
+    }
+  });
+}
 
 
 // module.exports {
@@ -99,3 +121,4 @@ function getReviews(businessId, start = null, sort = null, search = null, callba
 
 module.exports.connection = connection;
 module.exports.getReviews = getReviews;
+module.exports.updateReviewVote = updateReviewVote;

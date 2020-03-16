@@ -10,12 +10,17 @@ const Promise = require('bluebird');
 // import database
 const db = require('./index.js');
 
-function randomDate() {
-  const year = Math.floor(Math.random() * 20) + 2000;
+  // const year = Math.floor(Math.random() * 5) + 2015
 
-  const month = Math.floor(Math.random() * 8) + 1;
+// const month = Math.floor(Math.random() * 10) + 2;
+
+
+function randomDate() {
+  const year = Math.floor(Math.random() * 5) + 2015;
+
+  const month = Math.floor(Math.random() * 10) + 2;
   const monthString = ('0' + month);
-  const day = Math.floor(Math.random() * 20) + 10;
+  const day = Math.floor(Math.random() * 28) + 1;
 
   const dateString = (year + monthString + day);
 
