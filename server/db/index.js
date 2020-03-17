@@ -96,13 +96,13 @@ function updateReviewVote(reviewInfo, callback) {
   } else {
     queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType}-1 WHERE review_id=${reviewInfo.id}`;
   }
-  connection.query(queryString, (err, results) => {
+  connection.query(queryString, (err) => {
     if (err) {
       console.log(err);
     } else {
       const updatedInfoQuery = `SELECT * FROM reviews WHERE review_id = ${reviewInfo.id}`;
-      connection.query(updatedInfoQuery, (err, result) => {
-        if (err) {
+      connection.query(updatedInfoQuery, (error, result) => {
+        if (error) {
           console.log(err, 'second callback');
         } else {
           callback(null, result);
