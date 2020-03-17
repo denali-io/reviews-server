@@ -31,6 +31,10 @@ module.exports = {
           'sass-loader',
         ],
       },
+      // {
+      //   test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+      //   loader: 'sass-loader',
+      // },
     ],
   },
 };
