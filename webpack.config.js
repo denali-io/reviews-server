@@ -13,7 +13,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: "/\.jsx?$/" : "babel-jest",
+        test: /\.jsx?$/,
+        //  : "babel-jest",
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -21,6 +22,13 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
       },
     ],
   },

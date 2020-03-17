@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-constructor */
 import React from 'react';
-
+import '../styles/styles.css';
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>HELLO FROM REACT</h1>
+        <h1>HELLO FROM REACT!!!!!!</h1>
       </div>
     );
   }

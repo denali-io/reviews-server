@@ -18,7 +18,6 @@ app.get('/', (req, res) => {
 
 app.get('/restaurants/:restaurantId', (req, res) => {
   const restaurant = req.params.restaurantId;
-  
   const start = parseInt(req.query.start);
   const sort = req.query.sort_by;
   const search = req.query.q;
@@ -32,7 +31,7 @@ app.get('/restaurants/:restaurantId', (req, res) => {
 });
 
 app.get('/reviewId/:reviewId', (req, res) => {
-// http://localhost:5000/reviews/9676?value=cool_count&status=true
+// http://localhost:5000/reviewId/9676?value=cool_count&voted=true
   const voteInfo = {
     id: Number(req.params.reviewId),
     voteType: req.query.value,
