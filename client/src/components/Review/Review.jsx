@@ -2,7 +2,7 @@ import React from 'react';
 import RatingBar from './RatingBar/RatingBar.jsx';
 import VoteButtons from './VoteButtons/VoteButtons.jsx';
 import User from './User/User.jsx';
-
+import './Review.scss';
 
 const spanStyle = {
   position: "relative",
@@ -39,7 +39,9 @@ const Review = ({ review }) => {
           {/* insert check-in icon */}
           <span>{checkIns}</span>
         </div>
-        <p>{review.body}</p>
+        <p className="reviewBody">
+          {review.body}
+        </p>
         <VoteButtons review={review} />
       </span>
 
