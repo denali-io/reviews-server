@@ -1,0 +1,49 @@
+$fiveStarColor: rgb(156, 0, 0);
+$fourStarColor: rgb(230, 64, 23);
+$threeStarColor: rgba(230, 123, 23, 0.993);
+$twoStarColor: rgb(241, 201, 20);
+$oneStarColor: rgb(236, 212, 103);
+
+
+    .oneStar {
+        background-color: $oneStarColor;
+        border: 1px solid $oneStarColor;   
+    }
+    .twoStars {
+        background-color: $twoStarColor;
+        border: 1px solid $twoStarColor;
+    }
+    .threeStars {
+        background-color: $threeStarColor;
+        border: 1px solid $threeStarColor;
+    }
+    .fourStars {
+        background-color: $fourStarColor;
+        border: 1px solid $fourStarColor;
+    }
+    .fiveStars {
+        background-color: $fiveStarColor;
+        border: 1px solid $fiveStarColor;
+    }
+    
+    .star {
+        color: white;
+    }
+    .starBox {
+        width: 12px;
+        height: 12px;
+        margin: 2px;
+        border-radius: 20%;
+        padding: 0px;
+    }
+    .emptyStarBox {
+        width: 12px;
+        height: 12px;
+        margin: 2px;
+        border-radius: 20%;
+        background-color: rgb(214, 211, 211);
+        border: 1px solid rgb(214, 211, 211);    
+    }
+    .ratingBar {
+        padding-bottom: 10px;
+    }

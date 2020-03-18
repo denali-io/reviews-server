@@ -5,7 +5,9 @@ module.exports = {
   clearMocks: true,
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'jsx'],
-
+  moduleNameMapper: {
+    '\\.(css|less|scss)$': 'identity-obj-proxy'
+  },
   setupFilesAfterEnv: ['jest-enzyme'],
 
   testEnvironment: 'enzyme',
