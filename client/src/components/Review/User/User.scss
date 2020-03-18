@@ -1,0 +1,38 @@
+.profilePic {
+//    display: inline-block;
+
+   border-radius: 10%;
+//    border: 2px solid red;  
+//    padding-bottom: 30px;
+}
+.profilePicContainer {
+    border: 2px transparent white;  
+    padding-bottom: 30px;
+    padding-right: 5px;
+}
+.userName {
+    color: rgb(51,102,187);
+}
+.userName:hover {
+    text-decoration: underline;
+}
+.userIcon {
+    color: rgb(247, 77, 10);
+    padding-right: 5px ;
+}
+.userStarIcon {
+    // width: 5px;
+    // height: 5px;
+    padding: 0px;
+    border-radius: 20%;
+    background-color: rgb(247, 77, 10);
+    border: 1px solid rgb(247, 77, 10);
+}
+.starIcon {
+    
+    color: white;
+    background-color: rgb(247, 77, 10);
+    border: 1px solid rgb(247, 77, 10);
+    padding: 1px;
+    border-radius: 20%;
+}
