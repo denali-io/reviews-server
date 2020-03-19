@@ -2,10 +2,11 @@ import React from 'react';
 import RatingBar from './RatingBar/RatingBar.jsx';
 import VoteButtons from './VoteButtons/VoteButtons.jsx';
 import User from './User/User.jsx';
+import CheckIn from './CheckIn/CheckIn.jsx';
 import './Review.scss';
 
 const spanStyle = {
-  position: "relative",
+  position: 'relative',
   bottom: 85,
   left: 225,
 };
@@ -21,24 +22,18 @@ const Review = ({ review }) => {
   }
   const day = date[6] + date[7];
   const formattedDate = [month, day, year].join('/');
-  let checkIns;
-  if (review.check_ins === 1) {
-    checkIns = '1 check-in';
-  } else if (review.check_ins === 0) {
-    checkIns = '';
-  } else {
-    checkIns = `${review.check_ins} check-ins`;
-  }
+
   return (
     <div>
       <User review={review} />
       <span style={spanStyle}>
         <RatingBar rating={review.rating} />
         <span>{formattedDate}</span>
-        <div>
-          {/* insert check-in icon */}
+        <CheckIn review={review} />
+        {/* <div>
+          insert check-in icon
           <span>{checkIns}</span>
-        </div>
+        </div> */}
         <p className="reviewBody">
           {review.body}
         </p>

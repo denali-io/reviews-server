@@ -6,6 +6,7 @@ import Review from '../client/src/components/Review/Review.jsx';
 import VoteButtons from '../client/src/components/Review/VoteButtons/VoteButtons.jsx';
 import User from '../client/src/components/Review/User/User.jsx';
 import RatingBar from '../client/src/components/Review/RatingBar/RatingBar.jsx';
+import CheckIn from '../client/src/components/Review/CheckIn/CheckIn.jsx';
 // Test rating for each review
 describe('Review Component', () => {
   const review = {
@@ -41,9 +42,11 @@ describe('Review Component', () => {
     const hasVoteButtons = reviewComponent.contains(<VoteButtons review={review} />);
     const hasUserComponent = reviewComponent.contains(<User review={review} />);
     const hasRatingBarComponent = reviewComponent.contains(<RatingBar rating={review.rating} />);
+    const hasCheckInComponent = reviewComponent.contains(<CheckIn review={review} />);
     expect(hasVoteButtons).toBe(true);
     expect(hasUserComponent).toBe(true);
     expect(hasRatingBarComponent).toBe(true);
+    expect(hasCheckInComponent).toBe(true);
   });
 
 
