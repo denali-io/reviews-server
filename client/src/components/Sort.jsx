@@ -14,17 +14,17 @@ class Sort extends React.Component {
   }
 
   menuClick(event) {
-      console.log(event.target.id);
+    console.log(event.target.id);
     // event.preventDefault();
     if (this.state.showMenu === true) {
-      this.setState({ 
-          showMenu: false,
-          value: event.target.id,
-        });
+      this.setState({
+        showMenu: false,
+        value: event.target.id,
+      });
     } else {
-      this.setState({ 
-          showMenu: true,
-         });
+      this.setState({
+        showMenu: true,
+      });
     }
   }
 
