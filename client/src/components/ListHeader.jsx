@@ -21,7 +21,8 @@ class ListHeader extends React.Component {
   }
 
   handleSubmit(event) {
-    this.props.searchHandle(this.state.value)
+    this.props.searchHandle(this.state.value);
+    event.preventDefault();
   }
 
   render() {

@@ -10,7 +10,7 @@
     "populate": "node ./server/db/seeds",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -w",
-    "test": "jest",
+    "test": "jest --verbose --coverage",
     "seed": "node ./server/db/seeds"
   },
   "dependencies": {
