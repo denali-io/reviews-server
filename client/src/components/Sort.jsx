@@ -14,7 +14,7 @@ class Sort extends React.Component {
   }
 
   menuClick(event) {
-    event.preventDefault();
+    // event.preventDefault();
     if (this.state.showMenu === true) {
       this.setState({ showMenu: false });
     } else {
@@ -23,6 +23,27 @@ class Sort extends React.Component {
   }
 
   render() {
+    if (this.state.showMenu) {
+      return (
+        <span>
+          <div className="container">
+            <button type="button" className="button" onClick={this.menuClick}>
+              Sort by
+              <strong>{` ${this.state.value} `}</strong>
+              <FontAwesomeIcon icon={faSortDown} size="xs" />
+            </button>
+            <div className="dropdown">
+              <ul>
+                <li>Newest First</li>
+                <li>Oldest First</li>
+                <li>Highest Rated</li>
+                <li>Lowest Rated</li>
+              </ul>
+            </div>
+          </div>
+        </span>
+      );
+    }
     return (
       <span>
         <div className="container">
@@ -31,29 +52,6 @@ class Sort extends React.Component {
             <strong>{` ${this.state.value} `}</strong>
             <FontAwesomeIcon icon={faSortDown} size="xs" />
           </button>
-          <div className="dropdown">
-            <ul>
-              <li>Newest First</li>
-              <li>Oldest First</li>
-              <li>Highest Rated</li>
-              <li>Lowest Rated</li>
-            </ul>
-          </div>
-
-          {/* {
-          this.state.showMenu
-            ? (
-              <div className="menu">
-                <button>Newest First</button>
-                <button>Oldest First</button>
-                <button>Highest Rated</button>
-                <button>Lowest Rated</button>
-              </div>
-            )
-            : (
-              null
-            )
-      } */}
         </div>
       </span>
     );
