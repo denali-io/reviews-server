@@ -6,7 +6,6 @@ import './RatingBar.scss';
 const RatingBar = (props) => {
   const rating = props.rating;
   let ratingColor;
-  console.log(rating)
   if (rating === 1) {
     ratingColor = 'oneStar';
   } else if (rating === 2) {

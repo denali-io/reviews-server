@@ -9,11 +9,15 @@ class Sort extends React.Component {
     this.state = {
       value: 'Newest First',
     };
+    this.menuClick = this.menuClick.bind(this);
+  }
+  menuClick() {
+      console.log('clicked')
   }
 
   render() {
     return (
-      <span className="sortMenu">
+      <span className="sortMenu" onClick={this.menuClick} >
         Sort by
         <strong>{` ${this.state.value} `}</strong>
         <FontAwesomeIcon icon={faSortDown} size="xs" />
