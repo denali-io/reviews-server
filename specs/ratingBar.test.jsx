@@ -4,7 +4,7 @@ import RatingBar from '../client/src/components/Review/RatingBar/RatingBar.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-describe('RatingBar', () => {
+describe('RatingBar Component', () => {
   const review = {
     date: 20190627,
     rating: 3,

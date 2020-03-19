@@ -8,7 +8,8 @@ import './Review.scss';
 const spanStyle = {
   position: 'relative',
   bottom: 85,
-  left: 225,
+  left: 275,
+
 };
 const Review = ({ review }) => {
   let date = `${review.date} `;

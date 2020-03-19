@@ -63,11 +63,4 @@ describe('Review Component', () => {
   });
 });
 
-//   it('displays the correct number of check-ins', () => {
-//     const wrapper = shallow(<Review review={review} />);
-//     expect(wrapper.contains('2 check-ins')).toBe(true);
-//     const wrapper2 = shallow(<Review review={review2} />);
-//     expect(wrapper2.contains('1 check-in')).toBe(true);
-//     const wrapper3 = shallow(<Review review={review3} />);
-//     expect(wrapper3.contains('check-ins')).toBe(false);
-//   });
+
