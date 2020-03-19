@@ -4,8 +4,8 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Sort.styles.scss';
 
 class Sort extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showMenu: false,
       value: 'Newest First',
@@ -14,8 +14,8 @@ class Sort extends React.Component {
   }
 
   menuClick(event) {
-    console.log(event.target.id);
-    // event.preventDefault();
+    let sortBy = (event.target.id);
+    this.props.sortHandler(sortBy);
     if (this.state.showMenu === true) {
       this.setState({
         showMenu: false,
@@ -24,6 +24,7 @@ class Sort extends React.Component {
     } else {
       this.setState({
         showMenu: true,
+        // value: event.target.id,
       });
     }
   }

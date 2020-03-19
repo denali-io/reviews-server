@@ -32,7 +32,7 @@ class ListHeader extends React.Component {
         <button type="submit" className="searchBtn" onClick={this.handleSubmit}>
           <FontAwesomeIcon icon={faSearch} className="searchIcon" size="lg" />
         </button>
-        <Sort />
+        <Sort sortHandler={this.props.sortHandler}/>
       </div>
     );
   }

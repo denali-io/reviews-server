@@ -11,12 +11,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: [],
-      sort: {
-        type: 'date',
-        order: 'desc'
-      }
+      sort: '',
     };
     this.searchReviews = this.searchReviews.bind(this);
+    this.sortHandler = this.sortHandler.bind(this);
   }
 
   componentDidMount() {
@@ -39,10 +37,40 @@ class App extends React.Component {
     });
   }
 
+  sortHandler(value) {
+    let sortQuery;
+    if (value === '') {
+      console.log('nothing');
+    } else if (value === 'Highest Rated') {
+      sortQuery = 'sort_by=rating_desc';
+      $.get(`http://localhost:5000/restaurants/100?${sortQuery}`, (results) => {
+        this.setState({
+          data: results,
+        });
+      });
+    } else if (value === 'Lowest Rated') {
+      sortQuery = 'sort_by=rating_asc';
+      $.get(`http://localhost:5000/restaurants/100?${sortQuery}`, (results) => {
+        this.setState({
+          data: results,
+        });
+      });
+    } else if (value === 'Newest First') {
+      this.getReviews();
+    } else if (value === 'Oldest First') {
+      sortQuery = 'sort_by=date_asc';
+      $.get(`http://localhost:5000/restaurants/100?${sortQuery}`, (results) => {
+        this.setState({
+          data: results,
+        });
+      });
+    }
+  }
+
   render() {
     return (
       <div>
-        <ListHeader searchHandle={this.searchReviews}/>
+        <ListHeader sortHandler={this.sortHandler} searchHandle={this.searchReviews} />
         <ReviewList data={this.state.data} />
       </div>
     );
