@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-constructor */
 import React from 'react';
 import $ from 'jquery';
-import Pagination from './Pagination.jsx'
+import Pagination from './Pagination.jsx';
 import ReviewList from './ReviewList.jsx';
 import ListHeader from './ListHeader.jsx';
 import '../styles/styles.scss';
@@ -17,6 +17,8 @@ class App extends React.Component {
     };
     this.searchReviews = this.searchReviews.bind(this);
     this.sortHandler = this.sortHandler.bind(this);
+    this.selectNextPage = this.selectNextPage.bind(this);
+    this.selectPreviousPage = this.selectPreviousPage.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +40,23 @@ class App extends React.Component {
       this.setState({
         totalReviews: total,
       });
+    });
+  }
+
+  selectNextPage() {
+    let nextPage = this.state.currentPage;
+    nextPage += 1;
+    // if (nextPage <= Math.ceil(this.state.totalReviews/20))
+    this.setState({
+      currentPage: nextPage,
+    });
+  }
+
+  selectPreviousPage() {
+    let previousPage = this.state.currentPage;
+    previousPage -= 1;
+    this.setState({
+      currentPage: previousPage,
     });
   }
 
@@ -84,7 +103,7 @@ class App extends React.Component {
       <div>
         <ListHeader sortHandler={this.sortHandler} searchHandle={this.searchReviews} />
         <ReviewList data={this.state.data} />
-        <Pagination totalReviews={this.state.totalReviews}/>
+        <Pagination previous={this.selectPreviousPage} totalReviews={this.state.totalReviews} next={this.selectNextPage} info={this.state} />
       </div>
     );
   }
