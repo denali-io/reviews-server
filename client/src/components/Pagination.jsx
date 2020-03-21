@@ -47,7 +47,7 @@ class Pagination extends React.Component {
       return (
         <div className="pagination">
           {linkArray}
-          {/* <a onClick={this.selectNext}>&raquo;</a> */}
+          <a onClick={this.selectNext}>&raquo;</a>
         </div>
       );
     } if (this.props.info.currentPage === Math.ceil(this.props.info.totalReviews / 20)) {

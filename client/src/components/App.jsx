@@ -62,10 +62,18 @@ class App extends React.Component {
       currentPage: previousPage,
     });
   }
-  selectPage (value) {
+
+  selectPage(value) {
     this.setState({
-      currentPage: value
-    })
+      currentPage: value,
+      // start: value * 20 - 20,
+    });
+    const start = value * 20 - 20;
+    $.get(`http://localhost:5000/restaurants/100?start=${start}&${this.state.sort}`, (results) => {
+      this.setState({
+        data: results,
+      });
+    });
   }
 
   searchReviews(value) {
@@ -95,7 +103,7 @@ class App extends React.Component {
         this.setState({
           data: results,
           sort: sortQuery,
-          totalReviews: this.state.initialReviews
+          totalReviews: this.state.initialReviews,
         });
       });
     } else if (value === 'Lowest Rated') {
@@ -113,7 +121,7 @@ class App extends React.Component {
         this.setState({
           data: results,
           sort: sortQuery,
-          totalReviews: this.state.initialReviews
+          totalReviews: this.state.initialReviews,
         });
       });
       this.setState({

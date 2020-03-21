@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/restaurants/:restaurantId', (req, res) => {
+  console.log(req.query)
   const restaurant = req.params.restaurantId;
   const start = parseInt(req.query.start);
   const sort = req.query.sort_by;
