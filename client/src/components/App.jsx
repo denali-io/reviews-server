@@ -125,7 +125,7 @@ class App extends React.Component {
         this.setState({
           data: results,
           sort: sortQuery,
-          totalReviews: this.state.initialReviews
+          totalReviews: this.state.initialReviews,
         });
       });
     }

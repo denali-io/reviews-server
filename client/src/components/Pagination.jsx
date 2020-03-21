@@ -33,11 +33,21 @@ class Pagination extends React.Component {
     for (i = 1; i <= numOfPages; i += 1) {
       linkArray.push(<a id={i} onClick={this.selectNewPage} key={i}>{i}</a>);
     }
+    if (total === 0) {
+      return (
+        <div />
+      );
+    }
+    if (total < 20) {
+      return (
+        <div>Page 1 of 1</div>
+      );
+    }
     if (this.props.info.currentPage === 1) {
       return (
         <div className="pagination">
           {linkArray}
-          <a onClick={this.selectNext}>&raquo;</a>
+          {/* <a onClick={this.selectNext}>&raquo;</a> */}
         </div>
       );
     } if (this.props.info.currentPage === Math.ceil(this.props.info.totalReviews / 20)) {
