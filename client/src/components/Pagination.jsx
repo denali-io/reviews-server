@@ -10,23 +10,28 @@ class Pagination extends React.Component {
     };
     this.selectNext = this.selectNext.bind(this);
     this.selectPrevious = this.selectPrevious.bind(this);
+    this.selectNewPage = this.selectNewPage.bind(this);
   }
 
   selectNext() {
     this.props.next();
   }
+
   selectPrevious() {
-      this.props.previous();
+    this.props.previous();
+  }
+
+  selectNewPage(e) {
+    this.props.select(Number(e.target.id));
   }
 
   render() {
-    console.log(this.props.info.currentPage, Math.ceil(this.props.info.totalReviews/20));
     const total = (this.props.totalReviews);
     const numOfPages = Math.ceil(total / 20);
     const linkArray = [];
     let i;
     for (i = 1; i <= numOfPages; i += 1) {
-      linkArray.push(<a key={i}>{i}</a>);
+      linkArray.push(<a id={i} onClick={this.selectNewPage} key={i}>{i}</a>);
     }
     if (this.props.info.currentPage === 1) {
       return (
@@ -35,18 +40,18 @@ class Pagination extends React.Component {
           <a onClick={this.selectNext}>&raquo;</a>
         </div>
       );
-    } else if (this.props.info.currentPage === Math.ceil(this.props.info.totalReviews/20)) {
-        console.log('hey')
+    } if (this.props.info.currentPage === Math.ceil(this.props.info.totalReviews / 20)) {
+      console.log('hey');
       return (
         <div className="pagination">
-          <a onClick={this.selectPrevious} >&laquo;</a>
+          <a onClick={this.selectPrevious}>&laquo;</a>
           {linkArray}
         </div>
-      )
-    } 
+      );
+    }
     return (
       <div className="pagination">
-        <a onClick={this.selectPrevious} >&laquo;</a>
+        <a onClick={this.selectPrevious}>&laquo;</a>
         {linkArray}
         <a onClick={this.selectNext}>&raquo;</a>
       </div>

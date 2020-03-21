@@ -30,15 +30,27 @@ app.get('/restaurants/:restaurantId', (req, res) => {
   });
 });
 app.get('/reviews/:restaurantId', (req, res) => {
-  console.log(req.params);
-  db.getTotalReviews(req.params.restaurantId, (err, results) => {
-    if (err) {
-      res.sendStatus(err);
-    } else {
-      const count = (JSON.stringify(results).slice(14, 16));
-      res.send(count);
-    }
-  });
+  let query;
+  if (req.query.q) {
+    query = req.query.q;
+    db.getQueryTotal(req.params.restaurantId, query, (err, results) => {
+      if (err) {
+        res.sendStatus(err);
+      } else {
+        const count = (JSON.stringify(results).slice(14, 16));
+        res.send(count);
+      }
+    });
+  } else {
+    db.getTotalReviews(req.params.restaurantId, (err, results) => {
+      if (err) {
+        res.sendStatus(err);
+      } else {
+        const count = (JSON.stringify(results).slice(14, 16));
+        res.send(count);
+      }
+    });
+  }
 });
 
 app.get('/reviewId/:reviewId', (req, res) => {

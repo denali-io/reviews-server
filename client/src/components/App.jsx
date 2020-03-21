@@ -12,13 +12,14 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: [],
-      sort: '',
+      sort: 'sort_by=date_desc',
       currentPage: 1,
     };
     this.searchReviews = this.searchReviews.bind(this);
     this.sortHandler = this.sortHandler.bind(this);
     this.selectNextPage = this.selectNextPage.bind(this);
     this.selectPreviousPage = this.selectPreviousPage.bind(this);
+    this.selectPage = this.selectPage.bind(this);
   }
 
   componentDidMount() {
@@ -27,7 +28,8 @@ class App extends React.Component {
   }
 
   getReviews() {
-    $.get('http://localhost:5000/restaurants/100?sort_by=date_desc', (results) => {
+    // let start = (this.state.currentPage * 20) - 20
+    $.get(`http://localhost:5000/restaurants/100?${this.state.sort}`, (results) => {
       this.setState({
         data: results,
       });
@@ -39,6 +41,7 @@ class App extends React.Component {
       const total = Number(results);
       this.setState({
         totalReviews: total,
+        initialReviews: total,
       });
     });
   }
@@ -59,11 +62,25 @@ class App extends React.Component {
       currentPage: previousPage,
     });
   }
+  selectPage (value) {
+    this.setState({
+      currentPage: value
+    })
+  }
 
   searchReviews(value) {
     $.get(`http://localhost:5000/restaurants/100?sort_by=date_desc&q=${value}`, (results) => {
       this.setState({
         data: results,
+      });
+    });
+    $.get(`http://localhost:5000/reviews/100?q=${value}`, (results) => {
+      let total = Number(results);
+      if (isNaN(total)) {
+        total = Number(results[0]);
+      }
+      this.setState({
+        totalReviews: total,
       });
     });
   }
@@ -77,6 +94,8 @@ class App extends React.Component {
       $.get(`http://localhost:5000/restaurants/100?${sortQuery}`, (results) => {
         this.setState({
           data: results,
+          sort: sortQuery,
+          totalReviews: this.state.initialReviews
         });
       });
     } else if (value === 'Lowest Rated') {
@@ -84,15 +103,22 @@ class App extends React.Component {
       $.get(`http://localhost:5000/restaurants/100?${sortQuery}`, (results) => {
         this.setState({
           data: results,
+          sort: sortQuery,
+          totalReviews: this.state.initialReviews,
         });
       });
     } else if (value === 'Newest First') {
       this.getReviews();
+      this.setState({
+        totalReviews: this.state.initialReviews
+      });
     } else if (value === 'Oldest First') {
       sortQuery = 'sort_by=date_asc';
       $.get(`http://localhost:5000/restaurants/100?${sortQuery}`, (results) => {
         this.setState({
           data: results,
+          sort: sortQuery,
+          totalReviews: this.state.initialReviews
         });
       });
     }
@@ -103,7 +129,7 @@ class App extends React.Component {
       <div>
         <ListHeader sortHandler={this.sortHandler} searchHandle={this.searchReviews} />
         <ReviewList data={this.state.data} />
-        <Pagination previous={this.selectPreviousPage} totalReviews={this.state.totalReviews} next={this.selectNextPage} info={this.state} />
+        <Pagination select={this.selectPage} previous={this.selectPreviousPage} totalReviews={this.state.totalReviews} next={this.selectNextPage} info={this.state} />
       </div>
     );
   }

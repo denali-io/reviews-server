@@ -83,7 +83,20 @@ function getTotalReviews(businessId, callback) {
     if (err) {
       callback(err);
     } else {
-      console.log(results)
+      // console.log(results)
+      callback(null, results);
+    }
+  });
+}
+function getQueryTotal(businessId, query, callback) {
+  console.log(query)
+  const queryText = ` AND body LIKE '%${query}%'`
+  const queryString = `SELECT COUNT (*) FROM reviews WHERE id_Restaurants = ${businessId}${queryText}`;
+  connection.query(queryString, callback, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      // console.log(results)
       callback(null, results);
     }
   });
@@ -124,3 +137,5 @@ module.exports.connection = connection;
 module.exports.getReviews = getReviews;
 module.exports.updateReviewVote = updateReviewVote;
 module.exports.getTotalReviews = getTotalReviews;
+module.exports.getQueryTotal = getQueryTotal;
+
