@@ -108,9 +108,16 @@ class App extends React.Component {
         });
       });
     } else if (value === 'Newest First') {
-      this.getReviews();
+      sortQuery = 'sort_by=date_desc';
+      $.get(`http://localhost:5000/restaurants/100?${sortQuery}`, (results) => {
+        this.setState({
+          data: results,
+          sort: sortQuery,
+          totalReviews: this.state.initialReviews
+        });
+      });
       this.setState({
-        totalReviews: this.state.initialReviews
+        totalReviews: this.state.initialReviews,
       });
     } else if (value === 'Oldest First') {
       sortQuery = 'sort_by=date_asc';
