@@ -66,14 +66,8 @@ function getReviews(businessId, start = null, sort = null, search = null, callba
   } else {
     startQuery = 'LIMIT 20';
   }
-//   console.log('search', searchQuery)
-//   console.log('start', startQuery)
-//   console.log('sort', sort)
-//   const queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE (id_Restaurants = ${businessId}${searchQuery});`;
 
   const queryString = `SELECT * FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id) WHERE id_Restaurants = ${businessId}${searchQuery} ${sortBy} ${startQuery}`;
-  // let qString =  `SELECT date FROM reviews INNER JOIN users ON (reviews.id_User = users.user_id)
-  // WHERE (id_Restaurants = 44) ORDER BY reviews.date DESC;`
   connection.query(queryString, callback, (err, results) => {
     if (err) {
       callback(err);
@@ -83,10 +77,17 @@ function getReviews(businessId, start = null, sort = null, search = null, callba
   });
 }
 
-
-// define functions to extract and update data
-
-// const getReviewsByRestId = function (restaurauntId, callback)
+function getTotalReviews(businessId, callback) {
+  const queryString = `SELECT COUNT (*) FROM reviews WHERE id_Restaurants = ${businessId}`;
+  connection.query(queryString, callback, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      console.log(results)
+      callback(null, results);
+    }
+  });
+}
 
 function updateReviewVote(reviewInfo, callback) {
   console.log(reviewInfo, 'db');
@@ -122,3 +123,4 @@ function updateReviewVote(reviewInfo, callback) {
 module.exports.connection = connection;
 module.exports.getReviews = getReviews;
 module.exports.updateReviewVote = updateReviewVote;
+module.exports.getTotalReviews = getTotalReviews;

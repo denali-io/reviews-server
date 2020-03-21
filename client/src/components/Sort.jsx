@@ -43,7 +43,7 @@ class Sort extends React.Component {
               <ul>
                 <li id="Newest First" onClick={this.menuClick}>Newest First</li>
                 <li id="Oldest First" onClick={this.menuClick}>Oldest First</li>
-                <li id="Highest Rated" onClick={this.menuClick}>Highest Rated</li>
+                <li data-test="highest" id="Highest Rated" onClick={this.menuClick}>Highest Rated</li>
                 <li id="Lowest Rated" onClick={this.menuClick}>Lowest Rated</li>
               </ul>
             </div>

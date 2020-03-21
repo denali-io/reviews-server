@@ -29,6 +29,17 @@ app.get('/restaurants/:restaurantId', (req, res) => {
     }
   });
 });
+app.get('/reviews/:restaurantId', (req, res) => {
+  console.log(req.params);
+  db.getTotalReviews(req.params.restaurantId, (err, results) => {
+    if (err) {
+      res.sendStatus(err);
+    } else {
+      const count = (JSON.stringify(results).slice(14, 16));
+      res.send(count);
+    }
+  });
+});
 
 app.get('/reviewId/:reviewId', (req, res) => {
 // http://localhost:5000/reviewId/9676?value=cool_count&voted=true
@@ -37,12 +48,12 @@ app.get('/reviewId/:reviewId', (req, res) => {
     voteType: req.query.value,
     voted: req.query.voted,
   };
-  console.log(voteInfo)
+  console.log(voteInfo);
   db.updateReviewVote(voteInfo, (err, results) => {
     if (err) {
-        console.log(err);
+      console.log(err);
     } else {
-        res.send(results);
+      res.send(results);
     }
   });
 });
