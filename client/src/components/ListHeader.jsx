@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Sort from './Sort.jsx';
 import '../styles/ListHeader.styles.scss';
-import AddReview from './AddReview.jsx';
+import AddRating from './AddRating.jsx';
 
 class ListHeader extends React.Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class ListHeader extends React.Component {
             <FontAwesomeIcon icon={faSearch} className="searchIcon" size="lg" />
           </button>
           <Sort sortHandler={this.props.sortHandler} reset={this.resetSort} />
-          <AddReview />
+          <AddRating />
         </div>
       );
     }
@@ -74,7 +74,7 @@ class ListHeader extends React.Component {
           <span>{this.props.totalReviews} reviews mentioning "{this.state.query}"  </span>
           <button className="clearResults">  Clear Results  <button onClick={this.clearSearch} className="closebox"><strong>x</strong></button></button>
         </div>
-        <AddReview />
+        <AddRating />
       </div>
     );
   }
