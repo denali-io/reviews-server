@@ -28,16 +28,6 @@
 
 
 
-.reviewContainer {
-    height: 115px;
-    width: 450px;
-    background-color: rgb(221, 221, 221);
-    margin-left: 175px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-
     // .addStar {
     //     color: blue;
     // }
@@ -73,14 +63,15 @@
 //       background-color: red;
 //   }
   .star-rating {
-    
+    margin-left: 105px;
+    padding-top: 8px;
     &__star {
       border: solid 1px, white;
       display: inline-block;
-      padding: 8px;
-    //   vertical-align: middle;
-      line-height: 1;
-      font-size: 1.35em;
+      padding: 15px;
+      border-radius: 10%;
+      line-height: 2;
+      font-size: 1.5em;
       background-color: #ABABAB;
       color: white;
       transition: color .2s ease-out;
@@ -109,7 +100,7 @@
         width: 12px;
         height: 12px;
         // margin: 5px;
-        // border-radius: 20%;
+        
         background-color: rgb(214, 211, 211);
         border: 1px solid rgb(214, 211, 211); 
       }
@@ -155,7 +146,7 @@ $oneStarColor: rgb(241, 225, 150);
         height: 25px;
         margin: 3px;
         // border-radius: 20%;
-        padding: 0px;
+        padding: 3px;
     }
     .emptyStarBox {
         width: 12px;

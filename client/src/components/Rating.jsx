@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import '../styles/AddReview.styles.scss';
+import '../styles/Rating.styles.scss';
 
      
   class Rating extends React.Component {
@@ -51,7 +51,6 @@ import '../styles/AddReview.styles.scss';
         if (this.state.rating >= i && this.state.rating != null) {
           klass += ` is-selected starRater`;
         }
-  
         stars.push(
           <span 
             onClick={this.rate.bind(this, i)}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGrinBeam, faGrin, faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import { faGrinBeam, faGrin, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 import './VoteButtons.scss';
 
 const VoteButtons = ( {status, updateVote, review} ) => {

@@ -1,0 +1,18 @@
+.reviewContainer {
+    height: 100px;
+    width: 400px;
+    background-color: rgb(241, 241, 241);
+    margin-left: 175px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: solid 1px rgb(211, 209, 209);
+}
+
+.addReviewLink {
+    margin-left: 90px;
+}
+.addReviewLink:hover {
+    color:rgb(51,102,187);
+    text-decoration: underline;
+}
