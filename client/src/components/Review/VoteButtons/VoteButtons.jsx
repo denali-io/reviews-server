@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGrinBeam, faGrin, faLightbulb } from '@fortawesome/free-solid-svg-icons'
 import './VoteButtons.scss';
 
-const VoteButtons = ( {updateVote, review} ) => {
+const VoteButtons = ( {status, updateVote, review} ) => {
   let funnyCount;
   let coolCount;
   let usefulCount;
@@ -22,13 +22,28 @@ const VoteButtons = ( {updateVote, review} ) => {
   } else {
     usefulCount = review.useful_count
   }
-  
-  return ( 
+  // let currentVoteStatus = status;
+  // let usefulButton;
+  // if (status.useful && review.useful) {
+  //   usefulButton = <button type="submit" className="voteBtn pushed" onClick={() => updateVote('useful')}>
+  //   <FontAwesomeIcon icon={faLightbulb} size="lg" useful-test="useful" />
+  //   <span btn-test="useful" id="us" className="btnText">{`Useful ${usefulCount + 1}`}</span>
+  // </button>
+  // } else {
+  //   usefulButton = <button type="submit" className="voteBtn" onClick={() => updateVote('useful')}>
+  //   <FontAwesomeIcon icon={faLightbulb} size="lg" useful-test="useful" />
+  //   <span btn-test="useful" id="us" className="btnText">{`Useful ${usefulCount}`}</span>
+  // </button>
+  // }
+
+  // IF ALL ARE FALSE, RETURN THIS
+  return (
     <span className="btnContainer">
       <button type="submit" className="voteBtn" onClick={() => updateVote('useful')}>
         <FontAwesomeIcon icon={faLightbulb} size="lg" useful-test="useful" />
         <span btn-test="useful" id="us" className="btnText">{`Useful ${usefulCount}`}</span>
       </button>
+     
       <button type="submit" className="voteBtn">
         <FontAwesomeIcon icon={faGrin} size="lg" funny-test="funny" />
         <span btn-test="funny" className="btnText">{`Funny ${funnyCount}`}</span>

@@ -167,12 +167,42 @@ class App extends React.Component {
       });
     }
   }
+
   updateVote(vote, reviewInfo) {
-    console.log(vote, reviewInfo, 'FROM APP')
-    $.ajax(`http://localhost:5000/review/${reviewInfo.review_id}?value=${reviewInfo.useful_count}&voted=${reviewInfo.useful_vote}`, {
+    
+    let dataCopy = this.state.data
+    let index;
+    dataCopy.forEach((obj, i) => {
+      if (obj.review_id === reviewInfo.review_id) {
+        index = i
+      }
+    });
+    let voteType = `${vote}_vote`
+    let voteCount = `${vote}_count`;
+    
+    // console.log(reviewCopy[voteType], reviewCopy[voteCount])
+
+    // console.log(reviewInfo.voteType)
+    $.ajax(`http://localhost:5000/review/${reviewInfo.review_id}?value=${voteType}&voted=${reviewInfo.useful_vote}`, {
       type: 'PATCH',
       data: reviewInfo,
-      success: () => { console.log('hey')}
+      success: (result) => {
+        console.log(result, 'look here')
+      },
+    });
+    let reviewCopy = reviewInfo;
+    if (reviewCopy[voteType] === 0) {
+      
+      reviewCopy[voteType] += 1;
+      reviewCopy[voteCount] += 1;
+    } else {
+      reviewCopy[voteType] -= 1;
+      reviewCopy[voteCount] -= 1;
+    }
+    dataCopy.splice(index, 1, reviewCopy);
+    // console.log(dataCopy)
+    this.setState({
+      data: dataCopy,
     })
   }
 

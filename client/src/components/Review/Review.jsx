@@ -15,12 +15,34 @@ const spanStyle = {
 class Review extends React.Component {
   constructor(props) {
     super(props);
+    this.state = ({
+      cool: false,
+      useful: false,
+      funny: false,
+    });
     this.voteClick = this.voteClick.bind(this);
   }
 
   voteClick(event) {
-    
-    this.props.updateVote(event, this.props.review)
+    if (event === 'useful') {
+      let newStatus = this.state.useful
+      this.setState({
+        useful: !newStatus,
+      });
+    }
+    if (event === 'funny') {
+      let newStatus = this.state.funny
+      this.setState({
+        funny: !newStatus,
+      });
+    }
+    if (event === 'cool') {
+      let newStatus = this.state.cool
+      this.setState({
+        cool: !newStatus,
+      });
+    }
+    this.props.updateVote(event, this.props.review);
   }
 
   render() {
@@ -35,7 +57,7 @@ class Review extends React.Component {
     }
     const day = date[6] + date[7];
     const formattedDate = [month, day, year].join('/');
-    
+    let currentVoteStatus = this.state;
     return (
       <div>
         <User review={this.props.review} />
@@ -46,7 +68,7 @@ class Review extends React.Component {
           <p className="reviewBody">
             {this.props.review.body}
           </p>
-          <VoteButtons updateVote={this.voteClick} review={this.props.review} />
+          <VoteButtons status={currentVoteStatus} updateVote={this.voteClick} review={this.props.review} />
         </span>
 
       </div>

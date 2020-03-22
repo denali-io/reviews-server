@@ -89,7 +89,7 @@ function getTotalReviews(businessId, callback) {
   });
 }
 function getQueryTotal(businessId, query, callback) {
-  console.log(query)
+ 
   const queryText = ` AND body LIKE '%${query}%'`
   const queryString = `SELECT COUNT (*) FROM reviews WHERE id_Restaurants = ${businessId}${queryText}`;
   connection.query(queryString, callback, (err, results) => {
@@ -103,13 +103,16 @@ function getQueryTotal(businessId, query, callback) {
 }
 
 function updateReviewVote(reviewInfo, callback) {
-  console.log(reviewInfo, 'db');
+  // console.log(reviewInfo.voted, reviewInfo.voteType);
   let queryString;
-  if (reviewInfo.voted === 'true') {
-    queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType}+1 WHERE review_id=${reviewInfo.id}`;
+  if (reviewInfo.voted === 0) {
+    console.log('not voted')
+    queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType} + 1, ${reviewInfo.voteStatus} = 1 WHERE review_id=${reviewInfo.id}`;
   } else {
-    queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType}-1 WHERE review_id=${reviewInfo.id}`;
+    console.log('voted')
+    queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType} - 1, ${reviewInfo.voteStatus} = 0 WHERE review_id=${reviewInfo.id}`;
   }
+  
   connection.query(queryString, (err) => {
     if (err) {
       console.log(err);
@@ -119,6 +122,7 @@ function updateReviewVote(reviewInfo, callback) {
         if (error) {
           console.log(err, 'second callback');
         } else {
+         
           callback(null, result);
         }
       });
