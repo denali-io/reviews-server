@@ -39,12 +39,12 @@ function getNewUserId() {
 
 const configureDB = () => {
   Promise.promisifyAll(db.connection);
-  return db.connection.queryAsync('DROP DATABASE fifthSquawk;')
+  return db.connection.queryAsync('DROP DATABASE sixthSquawk;')
     .then(() => {
-      db.connection.queryAsync('CREATE DATABASE fifthSquawk')
+      db.connection.queryAsync('CREATE DATABASE sixthSquawk');
     })
     .then(() => {
-      db.connection.queryAsync('USE fifthSquawk;');
+      db.connection.queryAsync('USE sixthSquawk;');
     })
     .then(() => {
       // restaurants
@@ -77,7 +77,10 @@ const configureDB = () => {
             useful_count INTEGER,
             cool_count INTEGER,
             funny_count INTEGER,
-            check_ins INTEGER
+            check_ins INTEGER,
+            useful_vote INTEGER DEFAULT 0,
+            cool_vote INTEGER DEFAULT 0,
+            funny_vote INTEGER DEFAULT 0
         );`);
     })
     .then(() => {
