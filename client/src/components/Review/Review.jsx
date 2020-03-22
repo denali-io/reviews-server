@@ -62,7 +62,7 @@ class Review extends React.Component {
     const formattedDate = [month, day, year].join('/');
     let currentVoteStatus = this.state;
     return (
-      <div>
+      <div className="review">
         <User review={this.props.review} />
         <span style={spanStyle}>
           <RatingBar rating={this.props.review.rating} />

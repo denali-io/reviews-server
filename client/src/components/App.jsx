@@ -192,8 +192,6 @@ class App extends React.Component {
     let voteType = `${vote}_vote`;
     let voteCount = `${vote}_count`;
 
-    // console.log(reviewCopy[voteType], reviewCopy[voteCount])
-
     // console.log(reviewInfo.voteType)
     $.ajax(`http://localhost:5000/review/${reviewInfo.review_id}?value=${voteType}&voted=${voteNum}`, {
       type: 'PATCH',
@@ -225,7 +223,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="application">
         <ListHeader reset={this.resetSearch} sortHandler={this.sortHandler} searchHandle={this.searchReviews} totalReviews={this.state.totalReviews}/>
         <ReviewList updateVote={this.updateVote} data={this.state.data} />
         <Pagination select={this.selectPage} previous={this.selectPreviousPage} totalReviews={this.state.totalReviews} next={this.selectNextPage} info={this.state} />
