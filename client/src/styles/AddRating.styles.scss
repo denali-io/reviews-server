@@ -1,12 +1,12 @@
 .reviewContainer {
     position: relative;
-    bottom: 80px;
+    bottom: 75px;
     height: 100px;
     width: 400px;
     background-color: rgb(241, 241, 241);
     margin-left: 270px;
-    // margin-top: 1px;
-    margin-bottom: 80px;
+    
+    // margin-bottom: 10px;
     display: 'flex';
     alignItems: 'center';
     border-radius: 5px;
@@ -68,6 +68,7 @@
 .iconContainer {
     margin-right: 4px;
     position: relative;
+    
     top: 37px;
     padding: 15px;
     border-radius: 5px;
