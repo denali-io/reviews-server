@@ -169,7 +169,14 @@ class App extends React.Component {
   }
 
   updateVote(vote, reviewInfo) {
-    
+    let voteNum;
+    if (vote === 'useful') {
+      voteNum = reviewInfo.useful_vote
+    } else if (vote === 'cool') {
+      voteNum = reviewInfo.cool_vote
+    } else if (vote === 'funny') {
+      voteNum = reviewInfo.funny_vote
+    }
     let dataCopy = this.state.data
     let index;
     dataCopy.forEach((obj, i) => {
@@ -177,13 +184,13 @@ class App extends React.Component {
         index = i
       }
     });
-    let voteType = `${vote}_vote`
+    let voteType = `${vote}_vote`;
     let voteCount = `${vote}_count`;
-    
+console.log(voteNum)
     // console.log(reviewCopy[voteType], reviewCopy[voteCount])
 
     // console.log(reviewInfo.voteType)
-    $.ajax(`http://localhost:5000/review/${reviewInfo.review_id}?value=${voteType}&voted=${reviewInfo.useful_vote}`, {
+    $.ajax(`http://localhost:5000/review/${reviewInfo.review_id}?value=${voteType}&voted=${voteNum}`, {
       type: 'PATCH',
       data: reviewInfo,
       success: (result) => {
@@ -192,7 +199,6 @@ class App extends React.Component {
     });
     let reviewCopy = reviewInfo;
     if (reviewCopy[voteType] === 0) {
-      
       reviewCopy[voteType] += 1;
       reviewCopy[voteCount] += 1;
     } else {
