@@ -127,12 +127,14 @@ class App extends React.Component {
     if (value === '') {
       console.log('nothing');
     } else if (value === 'Highest Rated') {
+
       sortQuery = 'sort_by=rating_desc';
       $.get(`http://localhost:5000/restaurants/100?${sortQuery}`, (results) => {
         this.setState({
           data: results,
           sort: sortQuery,
           totalReviews: this.state.initialReviews,
+          currentPage: 1,
         });
       });
     } else if (value === 'Lowest Rated') {
@@ -142,6 +144,7 @@ class App extends React.Component {
           data: results,
           sort: sortQuery,
           totalReviews: this.state.initialReviews,
+          currentPage: 1,
         });
       });
     } else if (value === 'Newest First') {
@@ -151,6 +154,7 @@ class App extends React.Component {
           data: results,
           sort: sortQuery,
           totalReviews: this.state.initialReviews,
+          currentPage: 1,
         });
       });
       this.setState({
@@ -163,6 +167,7 @@ class App extends React.Component {
           data: results,
           sort: sortQuery,
           totalReviews: this.state.initialReviews,
+          currentPage: 1,
         });
       });
     }
@@ -186,7 +191,7 @@ class App extends React.Component {
     });
     let voteType = `${vote}_vote`;
     let voteCount = `${vote}_count`;
-console.log(voteNum)
+
     // console.log(reviewCopy[voteType], reviewCopy[voteCount])
 
     // console.log(reviewInfo.voteType)

@@ -49,12 +49,16 @@ class Review extends React.Component {
     date = date.split('');
     const year = date[0] + date[1] + date[2] + date[3];
     let month;
+    let day;
     if (date[4] === '0') {
       month = date[5];
     } else {
       month = date[4] + date[5];
+    } if (date[6] === '0') {
+      day = date[7]
+    } else {
+      day = date[6] + date[7];
     }
-    const day = date[6] + date[7];
     const formattedDate = [month, day, year].join('/');
     let currentVoteStatus = this.state;
     return (
@@ -63,7 +67,7 @@ class Review extends React.Component {
         <span style={spanStyle}>
           <RatingBar rating={this.props.review.rating} />
           <span className="date">{formattedDate}</span>
-          <CheckIn className="date" review={this.props.review} />
+          <CheckIn  review={this.props.review} />
           <p className="reviewBody">
             {this.props.review.body}
           </p>

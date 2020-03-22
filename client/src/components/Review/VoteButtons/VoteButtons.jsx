@@ -22,7 +22,6 @@ const VoteButtons = ( {status, updateVote, review} ) => {
   } else {
     usefulCount = review.useful_count
   }
-  console.log(review.useful_vote, review.funny_vote, review.cool_vote)
   let buttonArray = [];
   if (review.useful_vote === 0) {
     buttonArray.push(<button type="submit" className="voteBtn clickFX" onClick={() => updateVote('useful')}>
