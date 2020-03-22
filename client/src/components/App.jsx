@@ -153,7 +153,8 @@ class App extends React.Component {
       });
     }
   }
-  scrollToTop() {
+
+  scrollToTop(){
     window.scrollTo({
       top: 0,
     });

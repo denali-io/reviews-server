@@ -8,7 +8,7 @@ class ListHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Search Within Reviews',
+      value: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +29,7 @@ class ListHeader extends React.Component {
     return (
       <div>
         <h3>Recommended Reviews</h3>
-        <input type="text" className="searchBar" value={this.state.value} onChange={this.handleChange} />
+        <input type="text" className="searchBar" placeholder="Search Within Reviews" value={this.state.value} onChange={this.handleChange} />
         <button type="submit" className="searchBtn" onClick={this.handleSubmit}>
           <FontAwesomeIcon icon={faSearch} className="searchIcon" size="lg" />
         </button>
