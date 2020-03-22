@@ -21,6 +21,7 @@ class App extends React.Component {
     this.selectPreviousPage = this.selectPreviousPage.bind(this);
     this.selectPage = this.selectPage.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
+    this.updateVote = this.updateVote.bind(this);
   }
 
   componentDidMount() {
@@ -93,7 +94,7 @@ class App extends React.Component {
   }
 
   searchReviews(value) {
-    console.log(this.state.sort)
+    
     $.get(`http://localhost:5000/restaurants/100?${this.state.sort}&q=${value}`, (results) => {
 
       this.setState({
@@ -166,6 +167,10 @@ class App extends React.Component {
       });
     }
   }
+  updateVote(vote, reviewInfo) {
+    console.log(vote, reviewInfo, 'FROM APP')
+
+  }
 
   scrollToTop(){
     window.scrollTo({
@@ -177,7 +182,7 @@ class App extends React.Component {
     return (
       <div>
         <ListHeader reset={this.resetSearch} sortHandler={this.sortHandler} searchHandle={this.searchReviews} totalReviews={this.state.totalReviews}/>
-        <ReviewList data={this.state.data} />
+        <ReviewList updateVote={this.updateVote} data={this.state.data} />
         <Pagination select={this.selectPage} previous={this.selectPreviousPage} totalReviews={this.state.totalReviews} next={this.selectNextPage} info={this.state} />
       </div>
     );

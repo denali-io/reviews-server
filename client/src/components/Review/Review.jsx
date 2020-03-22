@@ -14,8 +14,13 @@ const spanStyle = {
 
 class Review extends React.Component {
   constructor(props) {
-    super(props),
-    this.state = {};
+    super(props);
+    this.voteClick = this.voteClick.bind(this);
+  }
+
+  voteClick(event) {
+    
+    this.props.updateVote(event, this.props.review)
   }
 
   render() {
@@ -30,7 +35,7 @@ class Review extends React.Component {
     }
     const day = date[6] + date[7];
     const formattedDate = [month, day, year].join('/');
-
+    
     return (
       <div>
         <User review={this.props.review} />
@@ -41,7 +46,7 @@ class Review extends React.Component {
           <p className="reviewBody">
             {this.props.review.body}
           </p>
-          <VoteButtons review={this.props.review} />
+          <VoteButtons updateVote={this.voteClick} review={this.props.review} />
         </span>
 
       </div>
@@ -49,7 +54,5 @@ class Review extends React.Component {
   }
 }
 
-// const Review = ({ review }) => {
-// };
 
 export default Review;

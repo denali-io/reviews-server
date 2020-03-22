@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGrinBeam, faGrin, faLightbulb } from '@fortawesome/free-solid-svg-icons'
 import './VoteButtons.scss';
 
-const VoteButtons = ( {review} ) => {
+const VoteButtons = ( {updateVote, review} ) => {
   let funnyCount;
   let coolCount;
   let usefulCount;
@@ -22,18 +22,19 @@ const VoteButtons = ( {review} ) => {
   } else {
     usefulCount = review.useful_count
   }
-  return (
-    <span>
-      <button type="submit">
-        <FontAwesomeIcon icon={faLightbulb} useful-test="useful" />
-        <span btn-test="useful" className="btnText">{`Useful ${usefulCount}`}</span>
+  
+  return ( 
+    <span className="btnContainer">
+      <button type="submit" className="voteBtn" onClick={() => updateVote('useful')}>
+        <FontAwesomeIcon icon={faLightbulb} size="lg" useful-test="useful" />
+        <span btn-test="useful" id="us" className="btnText">{`Useful ${usefulCount}`}</span>
       </button>
-      <button type="submit">
-        <FontAwesomeIcon icon={faGrin} funny-test="funny" />
+      <button type="submit" className="voteBtn">
+        <FontAwesomeIcon icon={faGrin} size="lg" funny-test="funny" />
         <span btn-test="funny" className="btnText">{`Funny ${funnyCount}`}</span>
       </button>
-      <button type="submit">
-        <FontAwesomeIcon icon={faGrinBeam} cool-test="cool" />
+      <button type="submit" className="voteBtn">
+        <FontAwesomeIcon icon={faGrinBeam} size="lg" cool-test="cool" />
         <span btn-test="cool" className="btnText">{`Cool ${coolCount}`}</span>
       </button>
     </span>

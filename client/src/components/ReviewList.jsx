@@ -15,7 +15,7 @@ class ReviewList extends React.Component {
     const dataArray = this.props.data;
     const reviewArray = dataArray.map((review) => (
       <div className="reviewItem">
-        <Review review={review} />
+        <Review updateVote={this.props.updateVote} review={review} />
       </div>
     ));
 
