@@ -9,7 +9,6 @@ const spanStyle = {
   position: 'relative',
   bottom: 85,
   left: 275,
-
 };
 
 class Review extends React.Component {
@@ -63,8 +62,8 @@ class Review extends React.Component {
         <User review={this.props.review} />
         <span style={spanStyle}>
           <RatingBar rating={this.props.review.rating} />
-          <span>{formattedDate}</span>
-          <CheckIn review={this.props.review} />
+          <span className="date">{formattedDate}</span>
+          <CheckIn className="date" review={this.props.review} />
           <p className="reviewBody">
             {this.props.review.body}
           </p>

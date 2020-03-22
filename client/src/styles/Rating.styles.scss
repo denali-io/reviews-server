@@ -71,8 +71,8 @@
       padding: 15px;
       border-radius: 10%;
       line-height: 2;
-      font-size: 1.5em;
-      background-color: #ABABAB;
+      font-size: 1.2em;
+      background-color: rgb(211, 210, 210);
       color: white;
       transition: color .2s ease-out;
   
@@ -81,7 +81,7 @@
       }
       
       &.is-selected {
-        background-color: rgb(255, 45, 38);
+        background-color: #d32323;
         color: white;
 
       }

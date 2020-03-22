@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Sort from './Sort.jsx';
+
 import '../styles/ListHeader.styles.scss';
 import AddRating from './AddRating.jsx';
 
@@ -29,7 +30,6 @@ class ListHeader extends React.Component {
       searched: false,
     });
     this.props.reset();
-    
   }
 
 
@@ -53,8 +53,8 @@ class ListHeader extends React.Component {
       return (
         <div>
           <h3>Recommended Reviews</h3>
-          <input type="text" className="searchBar" placeholder="Search Within Reviews" value={this.state.value} onChange={this.handleChange} />
-          <button type="submit" className="searchBtn" onClick={this.handleSubmit}>
+          <input type="text" className="searchBar" placeholder="Search within reviews" value={this.state.value} onChange={this.handleChange} />
+          <button type="submit" className="searchBtn ripple" onClick={this.handleSubmit}>
             <FontAwesomeIcon icon={faSearch} className="searchIcon" size="lg" />
           </button>
           <Sort sortHandler={this.props.sortHandler} reset={this.resetSort} />
@@ -63,15 +63,15 @@ class ListHeader extends React.Component {
       );
     }
     return (
-      <div>
+      <div className="addRating">
         <h3>Recommended Reviews</h3>
-        <input type="text" className="searchBar" placeholder="Search Within Reviews" value={this.state.value} onChange={this.handleChange} />
+        <input type="text" className="searchBar" placeholder="Search within reviews" value={this.state.value} onChange={this.handleChange} />
         <button type="submit" className="searchBtn" onClick={this.handleSubmit}>
           <FontAwesomeIcon icon={faSearch} className="searchIcon" size="lg" />
         </button>
         <Sort sortHandler={this.props.sortHandler} />
         <div>
-          <span>{this.props.totalReviews} reviews mentioning "{this.state.query}"  </span>
+          <span class="searchResult">{this.props.totalReviews} reviews mentioning "{this.state.query}"  </span>
           <button className="clearResults">  Clear Results  <button onClick={this.clearSearch} className="closebox"><strong>x</strong></button></button>
         </div>
         <AddRating />

@@ -8,38 +8,68 @@ button, input[type="submit"], input[type="reset"] {
 	outline: inherit;
 }
 
-
+h3 {
+    font-family: Helvetica, Arial;
+    font-weight: bold;
+    font-size: 0.95em;
+    color: #333;
+}
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+  }
+  .ripple:active {
+    background-color: #fc6060;
+    background-size: 100%;
+    transition: background 0.05s;
+  }
 .searchBar {
     width: 400px;
-    height: 28px;
+    height: 26px;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(126, 124, 124);
     border-radius: 4px;
+    font-family: Helvetica, Arial;
+    color: #333;
+    font-size: 0.90em;
+}
+input.searchBar{
+    padding-left: 6px;
 }
 .searchIcon {
     color: white
 }
 .searchBtn {
-    background-color: rgb(201, 5, 5);
+    background-color: #d32323;
     height: 32px;
     width: 40px;
-    border: 1px solid rgb(201, 5, 5);
+    border: 1px solid #d32323;
     border-radius: 4px;
+    font-size: 0.7em;
 }
 div {
 	list-style-type: none;
     padding-left: 0px;
     padding-top: 3px;
 }
-
+.searchResult {
+    font-family: Helvetica, Arial;
+    color: #333;
+    text-decoration: bold;
+    font-size: 0.9em;
+}
 button.clearResults {
     background: none;
-    border-color: #000000;
-    color: #000000;
-	width: 120px;
+    border-color: rgb(151, 150, 150);
+	width: 100px;
     border: 1px solid rgb(190, 187, 187);
     border-radius: 3px;
     text-align: start;
     height: 30px;
+    font-family: Helvetica, Arial;
+    color: rgb(158, 155, 155);
+    font-size: 0.8em;
+    padding-left: 3px;
+    padding-right: 0px;
 
 }

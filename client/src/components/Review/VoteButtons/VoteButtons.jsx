@@ -25,36 +25,36 @@ const VoteButtons = ( {status, updateVote, review} ) => {
   console.log(review.useful_vote, review.funny_vote, review.cool_vote)
   let buttonArray = [];
   if (review.useful_vote === 0) {
-    buttonArray.push(<button type="submit" className="voteBtn" onClick={() => updateVote('useful')}>
+    buttonArray.push(<button type="submit" className="voteBtn clickFX" onClick={() => updateVote('useful')}>
     <FontAwesomeIcon icon={faLightbulb} size="lg" useful-test="useful" />
     <span btn-test="useful" id="us" className="btnText">{`Useful ${usefulCount}`}</span>
   </button>)
   } else {
-    buttonArray.push(<button type="submit" className="voteBtn pushed" onClick={() => updateVote('useful')}>
+    buttonArray.push(<button type="submit" className="voteBtn clickFX pushed" onClick={() => updateVote('useful')}>
     <FontAwesomeIcon icon={faLightbulb} size="lg" useful-test="useful" />
     <span btn-test="useful" id="us" className="btnText">{`Useful ${usefulCount}`}</span>
   </button>)
   }
   if (review.funny_vote === 0) {
-    buttonArray.push(<button type="submit" className="voteBtn" onClick={() => updateVote('funny')}>
+    buttonArray.push(<button type="submit" className="voteBtn clickFX" onClick={() => updateVote('funny')}>
     <FontAwesomeIcon icon={faGrin} size="lg" funny-test="funny" />
-    <span btn-test="funny" className="btnText">{`Funny ${funnyCount}`}</span>
+    <span btn-test="funny" className="btnText clickFX">{`Funny ${funnyCount}`}</span>
   </button>)    
   } else {
-    buttonArray.push(<button type="submit" className="voteBtn pushed" onClick={() => updateVote('funny')}>
+    buttonArray.push(<button type="submit" className="voteBtn clickFX pushed" onClick={() => updateVote('funny')}>
     <FontAwesomeIcon icon={faGrin} size="lg" funny-test="funny" />
-    <span btn-test="funny" className="btnText">{`Funny ${funnyCount}`}</span>
+    <span btn-test="funny" className="btnText clickFX">{`Funny ${funnyCount}`}</span>
   </button>)
   }
   if (review.cool_vote === 0) {
-    buttonArray.push(<button type="submit" className="voteBtn" onClick={() => updateVote('cool')}>
+    buttonArray.push(<button type="submit" className="voteBtn clickFX" onClick={() => updateVote('cool')}>
     <FontAwesomeIcon icon={faGrinBeam} size="lg" cool-test="cool" />
     <span btn-test="cool" className="btnText">{`Cool ${coolCount}`}</span>
   </button>)   
   } else {
-    buttonArray.push(<button type="submit" className="voteBtn pushed" onClick={() => updateVote('cool')}>
+    buttonArray.push(<button type="submit" className="voteBtn pushed clickFX" onClick={() => updateVote('cool')}>
     <FontAwesomeIcon icon={faGrinBeam} size="lg" cool-test="cool" />
-    <span btn-test="cool" className="btnText">{`Cool ${coolCount}`}</span>
+    <span btn-test="cool" className="btnText clickFX">{`Cool ${coolCount}`}</span>
   </button>)
   }
 

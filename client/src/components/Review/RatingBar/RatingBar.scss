@@ -1,8 +1,8 @@
-$fiveStarColor: rgb(201, 5, 5);
-$fourStarColor: rgb(255, 45, 38);
-$threeStarColor: rgb(255, 115, 0);
-$twoStarColor: rgb(251, 255, 0);
-$oneStarColor: rgb(241, 225, 150);
+$fiveStarColor: rgba(209, 0, 0, 0.788);
+$fourStarColor: rgb#d32323;
+$threeStarColor: #FF9529;
+$twoStarColor: #FDCC0D;
+$oneStarColor: #FFDF00;
 
 
     .oneStar {
@@ -35,8 +35,10 @@ $oneStarColor: rgb(241, 225, 150);
         margin: 2px;
         border-radius: 20%;
         padding: 0px;
+        font-size: 0.9em;
     }
     .emptyStarBox {
+        font-size: 0.9em;
         width: 12px;
         height: 12px;
         margin: 2px;

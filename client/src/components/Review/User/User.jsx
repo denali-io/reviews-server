@@ -16,23 +16,23 @@ const User = ({ review }) => {
           <img className="profilePic" src={review.profile_pic} alt="nothing" />
         </span>
         <span className="userInfo">
-          <div className="userName">
-            <strong>{review.name}</strong>
+          <div className="userName" id="userName">
+            <strong className="userInfo">{review.name}</strong>
           </div>
-          <strong>{review.location}</strong>
-          <div>
+          <strong className="userInfoText">{review.location}</strong>
+          <div className="userInfoText">
             <FontAwesomeIcon className="userIcon" icon={faUserFriends} />
             <strong>{`${review.friends} `}</strong>
             friends
           </div>
-          <div>
+          <div className="userInfoText">
             <span className="userIcon">
               <FontAwesomeIcon className="starIcon" icon={faStar} size="xs" />
             </span>
             <strong>{`${review.reviews} `}</strong>
             reviews
           </div>
-          <div>
+          <div className="userInfoText">
             <FontAwesomeIcon className="userIcon" icon={faCamera} />
             <strong>{`${review.photos} `}</strong>
             photos

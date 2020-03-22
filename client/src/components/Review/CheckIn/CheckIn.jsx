@@ -20,7 +20,7 @@ const CheckIn = ({ review }) => {
   return (
     <div className="checkIn">
       <FontAwesomeIcon icon={faCheckCircle} className="checkInIcon" />
-      <span>{checkIns}</span>
+      <span className="checkInText">{checkIns}</span>
     </div>
   );
 };
