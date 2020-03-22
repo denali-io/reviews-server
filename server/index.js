@@ -54,21 +54,22 @@ app.get('/reviews/:restaurantId', (req, res) => {
   }
 });
 
-app.get('/reviewId/:reviewId', (req, res) => {
+app.patch('/review/:reviewId', (req, res) => {
 // http://localhost:5000/reviewId/9676?value=cool_count&voted=true
+
   const voteInfo = {
     id: Number(req.params.reviewId),
     voteType: req.query.value,
     voted: req.query.voted,
   };
-  console.log(voteInfo);
-  db.updateReviewVote(voteInfo, (err, results) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(results);
-    }
-  });
+  console.log(voteInfo)
+  // db.updateReviewVote(voteInfo, (err, results) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     res.send(results);
+  //   }
+  // });
 });
 
 app.listen(port, () => console.log(`SQUAWK listening on port ${port}!`));

@@ -169,7 +169,11 @@ class App extends React.Component {
   }
   updateVote(vote, reviewInfo) {
     console.log(vote, reviewInfo, 'FROM APP')
-
+    $.ajax(`http://localhost:5000/review/${reviewInfo.review_id}?value=${reviewInfo.useful_count}&voted=${reviewInfo.useful_vote}`, {
+      type: 'PATCH',
+      data: reviewInfo,
+      success: () => { console.log('hey')}
+    })
   }
 
   scrollToTop(){
