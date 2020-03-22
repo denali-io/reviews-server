@@ -53,6 +53,13 @@ class App extends React.Component {
     this.setState({
       currentPage: nextPage,
     });
+    const start = nextPage * 20 - 20;
+    $.get(`http://localhost:5000/restaurants/100?start=${start}&${this.state.sort}`, (results) => {
+      this.setState({
+        data: results,
+      });
+    });
+    this.scrollToTop();
   }
 
   selectPreviousPage() {
@@ -61,6 +68,13 @@ class App extends React.Component {
     this.setState({
       currentPage: previousPage,
     });
+    const start = previousPage * 20 - 20;
+    $.get(`http://localhost:5000/restaurants/100?start=${start}&${this.state.sort}`, (results) => {
+      this.setState({
+        data: results,
+      });
+    });
+    this.scrollToTop();
   }
 
   selectPage(value) {
@@ -74,6 +88,7 @@ class App extends React.Component {
         data: results,
       });
     });
+    this.scrollToTop();
   }
 
   searchReviews(value) {
@@ -137,6 +152,11 @@ class App extends React.Component {
         });
       });
     }
+  }
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+    });
   }
 
   render() {
