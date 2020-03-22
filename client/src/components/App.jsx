@@ -163,7 +163,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ListHeader sortHandler={this.sortHandler} searchHandle={this.searchReviews} />
+        <ListHeader sortHandler={this.sortHandler} searchHandle={this.searchReviews} totalReviews={this.state.totalReviews}/>
         <ReviewList data={this.state.data} />
         <Pagination select={this.selectPage} previous={this.selectPreviousPage} totalReviews={this.state.totalReviews} next={this.selectNextPage} info={this.state} />
       </div>

@@ -1,3 +1,14 @@
+button, input[type="submit"], input[type="reset"] {
+
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+
 .searchBar {
     width: 400px;
     height: 28px;
@@ -14,4 +25,21 @@
     width: 40px;
     border: 1px solid rgb(201, 5, 5);
     border-radius: 4px;
+}
+div {
+	list-style-type: none;
+    padding-left: 0px;
+    padding-top: 3px;
+}
+
+button.clearResults {
+    background: none;
+    border-color: #000000;
+    color: #000000;
+	width: 120px;
+    border: 1px solid rgb(190, 187, 187);
+    border-radius: 3px;
+    text-align: start;
+    height: 30px;
+
 }
