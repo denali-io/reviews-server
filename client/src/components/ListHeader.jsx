@@ -13,6 +13,7 @@ class ListHeader extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);   
   }
 
   handleChange(event) {
@@ -21,10 +22,20 @@ class ListHeader extends React.Component {
     });
   }
 
+  clearSearch() {
+    this.setState({
+      value: '',
+      searched: false,
+    });
+    this.props.reset();
+    
+  }
+
+
   handleSubmit(event) {
     if (this.state.value === '') {
       this.setState({
-        searched: false
+        searched: false,
       });
     } else {
       this.setState({
@@ -45,7 +56,7 @@ class ListHeader extends React.Component {
           <button type="submit" className="searchBtn" onClick={this.handleSubmit}>
             <FontAwesomeIcon icon={faSearch} className="searchIcon" size="lg" />
           </button>
-          <Sort sortHandler={this.props.sortHandler} />
+          <Sort sortHandler={this.props.sortHandler} reset={this.resetSort} />
           {/* <div>{this.props.totalReviews} reviews mentioning "{this.state.value}"</div> */}
         </div>
       );
@@ -60,7 +71,7 @@ class ListHeader extends React.Component {
         <Sort sortHandler={this.props.sortHandler} />
         <div>
           <span>{this.props.totalReviews} reviews mentioning "{this.state.query}"  </span>
-          <button className="clearResults">  Clear Results  <button className="closebox"><strong>x</strong></button></button>
+          <button className="clearResults">  Clear Results  <button onClick={this.clearSearch} className="closebox"><strong>x</strong></button></button>
         </div>
       </div>
     );

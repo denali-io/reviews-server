@@ -20,6 +20,7 @@ class App extends React.Component {
     this.selectNextPage = this.selectNextPage.bind(this);
     this.selectPreviousPage = this.selectPreviousPage.bind(this);
     this.selectPage = this.selectPage.bind(this);
+    this.resetSearch = this.resetSearch.bind(this);
   }
 
   componentDidMount() {
@@ -92,7 +93,9 @@ class App extends React.Component {
   }
 
   searchReviews(value) {
-    $.get(`http://localhost:5000/restaurants/100?sort_by=date_desc&q=${value}`, (results) => {
+    console.log(this.state.sort)
+    $.get(`http://localhost:5000/restaurants/100?${this.state.sort}&q=${value}`, (results) => {
+
       this.setState({
         data: results,
       });
@@ -104,8 +107,18 @@ class App extends React.Component {
       }
       this.setState({
         totalReviews: total,
+        currentPage: 1,
       });
     });
+  }
+
+
+  resetSearch() {
+    this.setState({
+      currentPage: 1,
+      totalReviews: this.state.initialReviews,
+      // sort: 'sort_by=date_desc',
+    }, this.getReviews);
   }
 
   sortHandler(value) {
@@ -163,7 +176,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ListHeader sortHandler={this.sortHandler} searchHandle={this.searchReviews} totalReviews={this.state.totalReviews}/>
+        <ListHeader reset={this.resetSearch} sortHandler={this.sortHandler} searchHandle={this.searchReviews} totalReviews={this.state.totalReviews}/>
         <ReviewList data={this.state.data} />
         <Pagination select={this.selectPage} previous={this.selectPreviousPage} totalReviews={this.state.totalReviews} next={this.selectNextPage} info={this.state} />
       </div>

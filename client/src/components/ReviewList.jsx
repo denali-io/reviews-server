@@ -11,7 +11,6 @@ class ReviewList extends React.Component {
     };
   }
 
-
   render() {
     const dataArray = this.props.data;
     const reviewArray = dataArray.map((review) => (
@@ -19,7 +18,7 @@ class ReviewList extends React.Component {
         <Review review={review} />
       </div>
     ));
-    console.log(reviewArray);
+
     return (
       <div>
         {reviewArray}

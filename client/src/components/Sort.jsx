@@ -12,6 +12,9 @@ class Sort extends React.Component {
     };
     this.menuClick = this.menuClick.bind(this);
   }
+  resetSort() {
+      this.props.reset('hello from SORT')
+  }
 
   menuClick(event) {
     let sortBy = (event.target.id);
