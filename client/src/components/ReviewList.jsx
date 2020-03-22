@@ -13,11 +13,20 @@ class ReviewList extends React.Component {
 
   render() {
     const dataArray = this.props.data;
-    const reviewArray = dataArray.map((review) => (
-      <div className="reviewItem">
-        <Review updateVote={this.props.updateVote} review={review} />
-      </div>
-    ));
+    const reviewArray = dataArray.map((review, i) => {
+      if (i === this.props.data.length - 1) {
+        return (
+          <div className="reviewItem finalReview">
+            <Review updateVote={this.props.updateVote} review={review} />
+          </div>
+        );
+      }
+      return (
+        <div className="reviewItem">
+          <Review updateVote={this.props.updateVote} review={review} />
+        </div>
+      );
+    });
 
     return (
       <div>
@@ -26,5 +35,4 @@ class ReviewList extends React.Component {
     );
   }
 }
-
 export default ReviewList;

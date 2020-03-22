@@ -26,12 +26,17 @@ class Pagination extends React.Component {
   }
 
   render() {
+      console.log(this)
     const total = (this.props.totalReviews);
     const numOfPages = Math.ceil(total / 20);
     const linkArray = [];
     let i;
     for (i = 1; i <= numOfPages; i += 1) {
-      linkArray.push(<a id={i} onClick={this.selectNewPage} key={i}>{i}</a>);
+      if (i === this.props.info.currentPage) {
+        linkArray.push(<a id={i} className="currentPge" key={i}>{i}</a>);
+      } else {
+          linkArray.push(<a id={i} className="pageLink"onClick={this.selectNewPage} key={i}>{i}</a>);
+      }
     }
     if (total === 0) {
       return (
@@ -46,24 +51,35 @@ class Pagination extends React.Component {
     if (this.props.info.currentPage === 1) {
       return (
         <div className="pagination">
-          {linkArray}
-          <a onClick={this.selectNext}>&raquo;</a>
+            
+                <p className="pageText">Page {this.props.info.currentPage} of {numOfPages}</p>
+                <div className="linkss">
+            {linkArray}
+            <a className="pageLink" onClick={this.selectNext}>Next &raquo;</a>
+            </div>
         </div>
       );
-    } if (this.props.info.currentPage === Math.ceil(this.props.info.totalReviews / 20)) {
-      console.log('hey');
+    } if (this.props.info.currentPage === Math.ceil(this.props.info.totalReviews / 20)) {   
       return (
-        <div className="pagination">
-          <a onClick={this.selectPrevious}>&laquo;</a>
+        <div className="pagination ">
+            
+            <p className="pageText">Page {this.props.info.currentPage} of {numOfPages}</p>
+            <div className="linkss">
+          <a className="pageLink" onClick={this.selectPrevious}>&laquo; Previous</a>
           {linkArray}
+          </div>
         </div>
       );
     }
     return (
       <div className="pagination">
-        <a onClick={this.selectPrevious}>&laquo;</a>
+         
+        <p className="pageText">Page {this.props.info.currentPage} of {numOfPages}</p>
+        <div className="linkss"> 
+        <a className="pageLink" onClick={this.selectPrevious}>&laquo; Previous</a>
         {linkArray}
-        <a onClick={this.selectNext}>&raquo;</a>
+        <a className="pageLink" onClick={this.selectNext}>&raquo; Next</a>
+        </div>
       </div>
 
     );
