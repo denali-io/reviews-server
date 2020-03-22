@@ -105,14 +105,15 @@ function getQueryTotal(businessId, query, callback) {
 function updateReviewVote(reviewInfo, callback) {
   // console.log(reviewInfo.voted, reviewInfo.voteType);
   let queryString;
+  console.log(reviewInfo)
   if (reviewInfo.voted === 0) {
-    console.log('not voted')
-    queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType} + 1, ${reviewInfo.voteStatus} = 1 WHERE review_id=${reviewInfo.id}`;
+    queryString = `UPDATE reviews SET ${reviewInfo.voteStatus} = ${reviewInfo.voteStatus} + 1, ${reviewInfo.voteType} = 1 WHERE review_id=${reviewInfo.id}`;
+  } else if (reviewInfo.voted < 0) {
+    queryString = `UPDATE reviews SET ${reviewInfo.voteStatus} = ${reviewInfo.voteStatus} + 1 WHERE review_id=${reviewInfo.id}`;
   } else {
     console.log('voted')
-    queryString = `UPDATE reviews SET ${reviewInfo.voteType} = ${reviewInfo.voteType} - 1, ${reviewInfo.voteStatus} = 0 WHERE review_id=${reviewInfo.id}`;
+    queryString = `UPDATE reviews SET ${reviewInfo.voteStatus} = ${reviewInfo.voteStatus} - 1, ${reviewInfo.voteType} = 0 WHERE review_id=${reviewInfo.id}`;
   }
-  
   connection.query(queryString, (err) => {
     if (err) {
       console.log(err);
