@@ -1,8 +1,173 @@
-.reviewContainer {
-    height: 115px;
-    width: 450px;
-    background-color: rgb(221, 221, 221);
-    margin-left: 175px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+// $fiveStarColor: rgb(201, 5, 5);
+// $fourStarColor: rgb(255, 45, 38);
+// $threeStarColor: rgb(255, 115, 0);
+// $twoStarColor: rgb(251, 255, 0);
+// $oneStarColor: rgb(241, 225, 150);
+
+
+//     .oneStar {
+//         background-color: $oneStarColor;
+//         border: 1px solid $oneStarColor;   
+//     }
+//     .twoStars {
+//         background-color: $twoStarColor;
+//         border: 1px solid $twoStarColor;
+//     }
+//     .threeStars {
+//         background-color: $threeStarColor;
+//         border: 1px solid $threeStarColor;
+//     }
+//     .fourStars {
+//         background-color: $fourStarColor;
+//         border: 1px solid $fourStarColor;
+//     }
+//     .fiveStars {
+//         background-color: $fiveStarColor;
+//         border: 1px solid $fiveStarColor;
+//     }
+
+
+
+// .reviewContainer {
+//     height: 115px;
+//     width: 450px;
+//     background-color: rgb(221, 221, 221);
+//     margin-left: 175px;
+//     margin-top: 10px;
+//     margin-bottom: 10px;
+// }
+
+
+    // .addStar {
+    //     color: blue;
+    // }
+//     .starBox {
+//         width: 12px;
+//         height: 12px;
+//         margin: 2px;
+//         border-radius: 20%;
+//         padding: 0px;
+//     }
+//     .emptyStarBox {
+//         width: 12px;
+//         height: 12px;
+//         margin: 2px;
+//         border-radius: 20%;
+//         background-color: rgb(214, 211, 211);
+//         border: 1px solid rgb(214, 211, 211);    
+//     }
+//     .ratingBar {
+//         padding-bottom: 10px;
+//     }
+
+%visually-hidden {
+    position: absolute;
+    // overflow: hidden;
+    // clip: rect(0 0 0 0);
+    // height: 1px; width: 1px;
+    // margin: -1px; padding: 0; border: 0;
+  }
+  
+//   .starBox {
+//       border: solid 1px, black;
+//       background-color: red;
+//   }
+  .star-rating {
+    
+    &__star {
+      border: solid 1px, white;
+      display: inline-block;
+      padding: 8px;
+    //   vertical-align: middle;
+      line-height: 1;
+      font-size: 1.35em;
+      background-color: #ABABAB;
+      color: white;
+      transition: color .2s ease-out;
+  
+      &:hover {
+        cursor: pointer;
+      }
+      
+      &.is-selected {
+        background-color: rgb(255, 45, 38);
+        color: white;
+
+      }
+    //   &.is-selected2 {
+    //     background-color: rgb(251, 255, 0);
+    //     color: white;
+    //   }
+    //   &.is-selected3 {
+    //     background-color: rgb(255, 115, 0);
+    //     color: white;
+    //   }
+      
+      
+      &.is-disabled:hover {
+        cursor: default;
+        width: 12px;
+        height: 12px;
+        // margin: 5px;
+        // border-radius: 20%;
+        background-color: rgb(214, 211, 211);
+        border: 1px solid rgb(214, 211, 211); 
+      }
+    }
+  
+    // &__checkbox {
+    //   @extend %visually-hidden;
+    // }
+  }
+  $fiveStarColor: rgb(201, 5, 5);
+$fourStarColor: rgb(255, 45, 38);
+$threeStarColor: rgb(255, 115, 0);
+$twoStarColor: rgb(251, 255, 0);
+$oneStarColor: rgb(241, 225, 150);
+
+
+    .oneStar {
+        background-color: $oneStarColor;
+        border: 1px solid $oneStarColor;   
+    }
+    .twoStars {
+        background-color: $twoStarColor;
+        border: 1px solid $twoStarColor;
+    }
+    .threeStars {
+        background-color: $threeStarColor;
+        border: 1px solid $threeStarColor;
+    }
+    .fourStars {
+        background-color: $fourStarColor;
+        border: 1px solid $fourStarColor;
+    }
+    .fiveStars {
+        background-color: $fiveStarColor;
+        border: 1px solid $fiveStarColor;
+    }
+    
+    .star {
+        color: white;
+    }
+    .starRater {
+        width: 20px;
+        height: 25px;
+        margin: 3px;
+        // border-radius: 20%;
+        padding: 0px;
+    }
+    .emptyStarBox {
+        width: 12px;
+        height: 12px;
+        margin: 2px;
+        border-radius: 20%;
+        background-color: rgb(214, 211, 211);
+        border: 1px solid rgb(214, 211, 211);    
+    }
+    .ratingBar {
+        padding-bottom: 10px;
+    }
+
+
+
