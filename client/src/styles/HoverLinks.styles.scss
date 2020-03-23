@@ -8,7 +8,7 @@
     // border: 3px solid black;
     // font-size: 0.7em;
     display: block;
-    width: 120px;
+    width: 155px;
     font-family: Helvetica, Arial;
     color:  #0073bb; 
     font-size: 13px;
@@ -17,8 +17,8 @@
     text-align: left;
     top: 130px;
     left: -10px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d2d5d6;
 }
 
 .embedLink{
@@ -34,7 +34,13 @@
     font-weight: bold;
     padding: 10px;
     left: -20px;
-    bottom: 300px;
+    bottom: 290px;
+}
+.embedLink:hover {
+    text-decoration: underline;
+}
+.shareLink:hover {
+    text-decoration: underline;
 }
 
 .hoverIcon{
