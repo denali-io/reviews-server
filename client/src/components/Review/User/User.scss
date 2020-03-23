@@ -1,0 +1,53 @@
+.profilePic {
+//    display: inline-block;
+
+   border-radius: 10%;
+//    border: 2px solid red;  
+//    padding-bottom: 30px;
+}
+.profilePicContainer {
+    border: 2px transparent white;  
+    padding-bottom: 30px;
+    padding-right: 5px;
+}
+#userName {
+    font-family: Helvetica, Arial;
+    font-size: 0.8em;
+    width: 95px;
+    color: #0073bb;
+
+}
+// .userInfo {
+    
+// }
+.userInfoText{
+    color: rgb(53, 52, 52);
+    font-size: 0.8em;
+    font-family: Helvetica, Arial;
+}
+
+.userName:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    width: 95px;
+}
+.userIcon {
+    color: rgb(255, 95, 31);
+    padding-right: 5px ;
+}
+.userStarIcon {
+    // width: 5px;
+    // height: 5px;
+    padding: 0px;
+    border-radius: 20%;
+    background-color: rgb(255, 97, 35);
+    border: 1px solid rgb(255, 97, 34);
+}
+.starIcon {
+    
+    color: white;
+    background-color: rgb(255, 95, 31);
+    border: 1px solid rgb(255, 93, 28);
+    padding: 1px;
+    border-radius: 20%;
+}

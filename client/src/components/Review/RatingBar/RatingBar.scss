@@ -1,0 +1,51 @@
+$fiveStarColor: rgba(209, 0, 0, 0.788);
+$fourStarColor: rgb#d32323;
+$threeStarColor: #FF9529;
+$twoStarColor: #FDCC0D;
+$oneStarColor: #FFDF00;
+
+
+    .oneStar {
+        background-color: $oneStarColor;
+        border: 1px solid $oneStarColor;   
+    }
+    .twoStars {
+        background-color: $twoStarColor;
+        border: 1px solid $twoStarColor;
+    }
+    .threeStars {
+        background-color: $threeStarColor;
+        border: 1px solid $threeStarColor;
+    }
+    .fourStars {
+        background-color: $fourStarColor;
+        border: 1px solid $fourStarColor;
+    }
+    .fiveStars {
+        background-color: $fiveStarColor;
+        border: 1px solid $fiveStarColor;
+    }
+    
+    .star {
+        color: white;
+    }
+    .starBox {
+        width: 12px;
+        height: 12px;
+        margin: 2px;
+        border-radius: 20%;
+        padding: 0px;
+        font-size: 0.9em;
+    }
+    .emptyStarBox {
+        font-size: 0.9em;
+        width: 12px;
+        height: 12px;
+        margin: 2px;
+        border-radius: 20%;
+        background-color: rgb(214, 211, 211);
+        border: 1px solid rgb(214, 211, 211);    
+    }
+    .ratingBar {
+        padding-bottom: 10px;
+    }

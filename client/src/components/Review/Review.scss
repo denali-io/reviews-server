@@ -1,0 +1,19 @@
+.reviewBody {
+    width: 375px;
+    border: 1px transparent black;
+    font-family: Helvetica, Arial;
+    
+    color: rgb(54, 53, 53);
+    font-size: 0.95em;
+}
+.date { 
+    font-family: Helvetica, Arial;
+    color: rgb(128, 126, 126);
+    font-size: 0.9em;
+    padding-left: 3px;
+}
+
+.reviewEntry {
+    position: relative;
+    left: 50px;
+}

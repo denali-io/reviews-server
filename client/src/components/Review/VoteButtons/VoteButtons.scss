@@ -1,0 +1,32 @@
+.btnText {
+    padding: 5px;
+    font-family: Helvetica, Arial;
+    
+}
+.clickFX {
+    background-position: left bottom;
+    transition: background 0.8s;
+  }
+  .clickFX:active {
+    background-position: left bottom;
+    background-color: #409bd8;
+    background-size: 100%;
+    // transition: background 0.02s;
+  }
+
+.voteBtn { 
+    height: 35px;
+    border: 1px solid rgb(148, 147, 147);
+    color: #333;
+    font-size: 0.8em;
+    width: 95px;
+    margin-left: 7px;
+    border-radius: 2px;
+}
+
+.pushed {
+    color: white;
+    background-color: #0073bb;
+    border: 1px, solid,#0073bb;
+}
+

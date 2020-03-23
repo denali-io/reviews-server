@@ -1,30 +1,76 @@
-const express = require('express')
+/* eslint-disable radix */
+const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
+
 const app = express();
-const db = require('./db')
+const db = require('./db');
 // console.log(db.getReviews)
-port = 5000
+const port = 5000;
+
+app.use(express.static(path.join(__dirname, '../client/public')));
+// app.use(bodyParser);
+
 
 app.get('/', (req, res) => {
-    res.send('HELLO FROM SQUAWK!!!')
-})
+  res.send('HELLO FROM SQUAWK!!!');
+});
 
 app.get('/restaurants/:restaurantId', (req, res) => {
-    
-    let restaurant = req.params.restaurantId
-    
-    let start = parseInt(req.query.start)
-    let sort = req.query.sort_by
-    let search = req.query.q
-    db.getReviews(restaurant, start, sort, search, (err, results) => {
-        if (err) {
-            res.sendStatus(401)
-        } else {
-            res.send(results)
-        }
-    })
-    
-    
-})
+  console.log(req.query, 'heeeey')
+  const restaurant = req.params.restaurantId;
+  const start = parseInt(req.query.start);
+  const sort = req.query.sort_by;
+  const search = req.query.q;
+  db.getReviews(restaurant, start, sort, search, (err, results) => {
+    if (err) {
+      res.sendStatus(err);
+    } else {
+      res.send(results);
+    }
+  });
+});
+app.get('/reviews/:restaurantId', (req, res) => {
+  let query;
+  if (req.query.q) {
+    query = req.query.q;
+    db.getQueryTotal(req.params.restaurantId, query, (err, results) => {
+      if (err) {
+        res.sendStatus(err);
+      } else {
+        const count = (JSON.stringify(results).slice(14, 16));
+        res.send(count);
+      }
+    });
+  } else {
+    db.getTotalReviews(req.params.restaurantId, (err, results) => {
+      if (err) {
+        res.sendStatus(err);
+      } else {
+        const count = (JSON.stringify(results).slice(14, 16));
+        res.send(count);
+      }
+    });
+  }
+});
 
-app.listen(port, () => console.log(`SQUAWK listening on port ${port}!`))
+app.patch('/review/:reviewId', (req, res) => {
+// http://localhost:5000/reviewId/9676?value=cool_count&voted=true
+  console.log(req.query)
+  const voteInfo = {
+    id: Number(req.params.reviewId),
+    voteType: req.query.value,
+    voteStatus: `${req.query.value.split('_')[0]}_count`,
+    voted: Number(req.query.voted),
+  };
+  console.log(voteInfo);
+  db.updateReviewVote(voteInfo, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(results);
+    }
+  });
+});
+
+app.listen(port, () => console.log(`SQUAWK listening on port ${port}!`));

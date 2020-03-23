@@ -1,0 +1,48 @@
+.shareLink {
+
+    position: absolute;
+    // right: 10px;
+    // width: 30px;
+    // height: 15 px;
+    // padding-right: 10px;
+    // border: 3px solid black;
+    // font-size: 0.7em;
+    display: block;
+    width: 155px;
+    font-family: Helvetica, Arial;
+    color:  #0073bb; 
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+    top: 130px;
+    left: -10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d2d5d6;
+}
+
+.embedLink{
+    position: absolute;
+
+    // font-size: 0.7em;
+    display: block;
+    // width: 100%;
+    font-family: Helvetica, Arial;
+    color:  #0073bb; 
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    left: -20px;
+    bottom: 290px;
+}
+.embedLink:hover {
+    text-decoration: underline;
+}
+.shareLink:hover {
+    text-decoration: underline;
+}
+
+.hoverIcon{
+    padding-right: 4px;
+}
