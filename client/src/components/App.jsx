@@ -22,6 +22,7 @@ class App extends React.Component {
     this.selectPage = this.selectPage.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
     this.updateVote = this.updateVote.bind(this);
+    this.reviewHover = this.reviewHover.bind(this);
   }
 
   componentDidMount() {
@@ -221,11 +222,14 @@ class App extends React.Component {
     });
   }
 
+  reviewHover() {
+    console.log('HEY FROM APP')
+  }
   render() {
     return (
       <div className="application">
         <ListHeader reset={this.resetSearch} sortHandler={this.sortHandler} searchHandle={this.searchReviews} totalReviews={this.state.totalReviews}/>
-        <ReviewList updateVote={this.updateVote} data={this.state.data} />
+        <ReviewList hover={this.reviewHover} updateVote={this.updateVote} data={this.state.data} />
         <Pagination select={this.selectPage} previous={this.selectPreviousPage} totalReviews={this.state.totalReviews} next={this.selectNextPage} info={this.state} />
       </div>
     );

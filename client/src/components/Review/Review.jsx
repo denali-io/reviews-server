@@ -2,6 +2,7 @@ import React from 'react';
 import RatingBar from './RatingBar/RatingBar.jsx';
 import VoteButtons from './VoteButtons/VoteButtons.jsx';
 import User from './User/User.jsx';
+
 import CheckIn from './CheckIn/CheckIn.jsx';
 import './Review.scss';
 
@@ -18,8 +19,21 @@ class Review extends React.Component {
       cool: false,
       useful: false,
       funny: false,
+      isHovered: false,
     });
     this.voteClick = this.voteClick.bind(this);
+    this.mouseOutHandler = this.mouseOutHandler.bind(this);
+    this.mouseOverHandler = this.mouseOverHandler.bind(this);
+  }
+  mouseOverHandler() {
+    this.setState({
+      isHovered: true,
+    })
+  }
+  mouseOutHandler () {
+    this.setState({
+      isHovered: false,
+    })
   }
 
   voteClick(event) {
@@ -61,9 +75,13 @@ class Review extends React.Component {
     }
     const formattedDate = [month, day, year].join('/');
     let currentVoteStatus = this.state;
+    let hoverStatus = this.state.isHovered
     return (
-      <div className="review">
-        <User review={this.props.review} />
+      
+      <div className="reviewEntry" onMouseLeave={this.mouseOutHandler}onMouseOver={this.mouseOverHandler}>
+        
+        <User isHovered={hoverStatus}review={this.props.review} />
+        
         <span style={spanStyle}>
           <RatingBar rating={this.props.review.rating} />
           <span className="date">{formattedDate}</span>
@@ -72,6 +90,7 @@ class Review extends React.Component {
             {this.props.review.body}
           </p>
           <VoteButtons status={currentVoteStatus} updateVote={this.voteClick} review={this.props.review} />
+          
         </span>
 
       </div>

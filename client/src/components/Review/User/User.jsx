@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends, faCamera, faStar } from '@fortawesome/free-solid-svg-icons';
+import HoverLinks from '../HoverLinks.jsx'
 import './User.scss';
 const divStyle = {
     display: 'flex',
@@ -8,7 +9,7 @@ const divStyle = {
   };
 // const divStyle = {};
 
-const User = ({ review }) => {
+const User = ({ isHovered, review }) => {
   return (
     <div>
       <span style={divStyle}>
@@ -37,6 +38,7 @@ const User = ({ review }) => {
             <strong>{`${review.photos} `}</strong>
             photos
           </div>
+          <HoverLinks isHovered={isHovered}/>
         </span>
       </span>
     </div>
