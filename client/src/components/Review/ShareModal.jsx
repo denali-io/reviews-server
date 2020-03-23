@@ -1,15 +1,43 @@
 import React from 'react';
+import '../../styles/ShareModal.styles.scss';
 
-const ShareModal = ({ handleClose, show, children }) => {
-  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+class ShareModal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: true,
+    };
+  }
 
-  return (
-    <div className={showHideClassname}>
-      <section className="modal-main">
-        {children}
-        <button onClick={handleClose}>close</button>
-      </section>
-    </div>
-  );
-};
+  render() {
+    let showHideClassName;
+    let classy;
+    if (this.state.showModal) {
+      classy = 'modal display-block';
+    } else {
+      classy = 'modal display-none';
+    }
+    if (!showHideClassName) {
+      return (
+        <div className={classy}>
+        {/* <div> */}
+        <section className="modal-main">
+          {this.props.children}
+          <button onClick={this.props.handleClose}>close</button>
+        </section>
+      </div>
+      )
+    } else {
+      return (
+        <div className={classy}>
+          {/* <div> */}
+          <section className="modal-main">
+            {this.props.children}
+            <button onClick={this.props.handleClose}>close</button>
+          </section>
+        </div>
+      );
+    }
+  }
+}
 export default ShareModal;

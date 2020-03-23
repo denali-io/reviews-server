@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faShareSquare } from '@fortawesome/free-solid-svg-icons';
+import ReactDOM from 'react-dom';
+import ShareModal from './ShareModal.jsx';
 import '../../styles/HoverLinks.styles.scss';
 
 class HoverLinks extends React.Component {
@@ -17,9 +19,15 @@ class HoverLinks extends React.Component {
   }
 
   showShareModal() {
-    this.setState({
-      showShare: true,
-    });
+      console.log('sorry, not gonna happen')
+    // this.setState({
+    //   showShare: true,
+    // }, ReactDOM.render(
+    //   <ShareModal show={this.state.showShare} handleClose={this.hideShareModal}>
+    //     <p>Modal</p>
+    //     <p>Data</p>
+    //   </ShareModal>, document.getElementById('App'),
+    // ));
   }
 
   hideShareModal() {
@@ -43,7 +51,7 @@ class HoverLinks extends React.Component {
   render() {
     if (this.props.isHovered) {
       return (
-        <div>
+        <main>
           <a className="shareLink" onClick={this.showShareModal}>
             <FontAwesomeIcon icon={faShareSquare} className="hoverIcon" />
             Share review
@@ -53,9 +61,25 @@ class HoverLinks extends React.Component {
             <FontAwesomeIcon icon={faChevronRight} className="hoverIcon" />
             Embed review
           </a>
-        </div>
+        </main>
       );
     }
+    if (this.props.isHovered && this.state.showShare) {
+      return (
+        <main>
+          <a className="shareLink" onClick={this.showShareModal}>
+            <FontAwesomeIcon icon={faShareSquare} className="hoverIcon" />
+            Share review
+          </a>
+          <a className="embedLink">
+            <FontAwesomeIcon icon={faChevronLeft} />
+            <FontAwesomeIcon icon={faChevronRight} className="hoverIcon" />
+            Embed review
+          </a>
+        </main>
+      );
+    }
+
     return null;
   }
 }

@@ -38,7 +38,8 @@ const User = ({ isHovered, review }) => {
             <strong>{`${review.photos} `}</strong>
             photos
           </div>
-          <HoverLinks isHovered={isHovered}/>
+          <HoverLinks isHovered={isHovered} />
+          {/* <HoverLinks /> */}
         </span>
       </span>
     </div>
