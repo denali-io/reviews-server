@@ -80,7 +80,7 @@ class Review extends React.Component {
       
       <div className="reviewEntry" onMouseLeave={this.mouseOutHandler}onMouseOver={this.mouseOverHandler}>
         
-        <User isHovered={hoverStatus}review={this.props.review} />
+        <User isHovered={this.state.isHovered} review={this.props.review} />
         
         <span style={spanStyle}>
           <RatingBar rating={this.props.review.rating} />
@@ -90,7 +90,6 @@ class Review extends React.Component {
             {this.props.review.body}
           </p>
           <VoteButtons status={currentVoteStatus} updateVote={this.voteClick} review={this.props.review} />
-          
         </span>
 
       </div>
