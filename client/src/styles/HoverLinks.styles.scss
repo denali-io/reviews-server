@@ -8,15 +8,16 @@
     // border: 3px solid black;
     // font-size: 0.7em;
     display: block;
-    width: 100px;
+    width: 120px;
     font-family: Helvetica, Arial;
     color:  #0073bb; 
-    font-size: 10px;
+    font-size: 13px;
+    font-weight: bold;
     cursor: pointer;
     text-align: left;
     top: 130px;
-    left: -40px;
-    padding-bottom: 7px;
+    left: -10px;
+    padding-bottom: 4px;
     border-bottom: 1px solid black;
 }
 
@@ -28,10 +29,14 @@
     // width: 100%;
     font-family: Helvetica, Arial;
     color:  #0073bb; 
-    font-size: 10px;
+    font-size: 13px;
     cursor: pointer;
-    
+    font-weight: bold;
     padding: 10px;
-    left: -50px;
+    left: -20px;
     bottom: 300px;
+}
+
+.hoverIcon{
+    padding-right: 4px;
 }
