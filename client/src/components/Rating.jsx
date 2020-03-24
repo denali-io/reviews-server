@@ -20,25 +20,25 @@ import '../styles/Rating.styles.scss';
     }
 
     rate(rating) {
-      this.setState({
-        rating: rating,
-        temp_rating: rating
-      });
+      // this.setState({
+      //   rating: rating,
+      //   temp_rating: rating
+      // });
     }
 
     star_over(rating) {
-      this.state.temp_rating = this.state.rating;
-      this.state.rating = rating;
+      // this.state.temp_rating = this.state.rating;
+      // this.state.rating = rating;
       
-      this.setState({
-        rating: this.state.rating,
-        temp_rating: this.state.temp_rating
-      });
+      // this.setState({
+      //   rating: this.state.rating,
+      //   temp_rating: this.state.temp_rating
+      // });
     }
     star_out() {
-      this.state.rating = this.state.temp_rating;
+      // this.state.rating = this.state.temp_rating;
       
-      this.setState({ rating: this.state.rating });
+      // this.setState({ rating: this.state.rating });
     }
     render() {
 
