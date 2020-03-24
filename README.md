@@ -3,11 +3,9 @@
 > Project description
 
 ## Related Projects
-
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/Denali-Outdoors/reviews-server
+  - https://github.com/Denali-Outdoors/reservations-server
+  - https://github.com/Denali-Outdoors/image-carousel-server
 
 ## Table of Contents
 
@@ -18,6 +16,13 @@
 ## Usage
 
 > Some usage instructions
+1. Run the command $ npm install to install dependencies
+2. enter your MYSQL credentials in the file ./server/config.js
+3. create database "sixthSquawk" if it does not already exist
+4. execute the command $ npm run seed to add data to the database
+5. start the server by executing the command $ npm run server-dev
+6. execute the command $ npm run react-dev to run webpack and bundle the app
+7. Navigate to localhost:5001
 
 ## Requirements
 
