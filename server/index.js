@@ -1,18 +1,20 @@
 /* eslint-disable radix */
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
 const db = require('./db');
 // console.log(db.getReviews)
-const port = 5000;
-
-app.use(express.static(path.join(__dirname, '../client/public')));
+const port = 5001;
+app.use(cors());
+app.use(express.static(path.join(__dirname, '../client/public/')));
 // app.use(bodyParser);
 
 
 app.get('/', (req, res) => {
+  console.log('hit')
   res.send('HELLO FROM SQUAWK!!!');
 });
 
@@ -56,7 +58,6 @@ app.get('/reviews/:restaurantId', (req, res) => {
 
 app.patch('/review/:reviewId', (req, res) => {
 // http://localhost:5000/reviewId/9676?value=cool_count&voted=true
-  console.log(req.query)
   const voteInfo = {
     id: Number(req.params.reviewId),
     voteType: req.query.value,

@@ -26,7 +26,6 @@ class Pagination extends React.Component {
   }
 
   render() {
-      console.log(this)
     const total = (this.props.totalReviews);
     const numOfPages = Math.ceil(total / 20);
     const linkArray = [];
