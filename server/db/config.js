@@ -2,7 +2,8 @@
 module.exports = {
   // is host necessary???
   host: 'localhost',
-  user: 'root',
-  password: '12345',
-  database: 'sixthSquawk',
+  user: 'root', // INSERT MYSQL CREDENTIALS HERE,
+  password: '12345', // INSERT MYSQL PASSWORD HERE,
+  // CREATE DATABASE "sixthSquawk"
+  // database: 'sixthSquawk',
 };

@@ -39,12 +39,12 @@ function getNewUserId() {
 
 const configureDB = () => {
   Promise.promisifyAll(db.connection);
-  return db.connection.queryAsync('DROP DATABASE sixthSquawk;')
+  return db.connection.queryAsync('DROP DATABASE IF EXISTS testSquawk;')
     .then(() => {
-      db.connection.queryAsync('CREATE DATABASE sixthSquawk');
+      db.connection.queryAsync('CREATE DATABASE testSquawk');
     })
     .then(() => {
-      db.connection.queryAsync('USE sixthSquawk;');
+      db.connection.queryAsync('USE testSquawk;');
     })
     .then(() => {
       // restaurants
@@ -119,11 +119,11 @@ const configureDB = () => {
     })
     .then(() => {
       // populate reviews
-      // generate random number of reviews for each restaurant  
+      // generate random number of reviews for each restaurant
       for (let restaurantId = 1; restaurantId < 101; restaurantId++) {
         // create user collection to prevent repeats
         const usersCheckedIn = [];
-        const numOfReviews = 100;// getNumOfReviews()
+        const numOfReviews = Math.floor(Math.random() * 110) + 27;// getNumOfReviews()
         for (let i = 0; i < numOfReviews; i++) {
           // generate a fake userId between 1 & 2000
           const currentUser = getNewUserId();

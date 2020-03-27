@@ -91,7 +91,7 @@ class App extends React.Component {
         data: results,
       });
     });
-    this.scrollToTop();
+    // this.scrollToTop();
   }
 
   searchReviews(value) {
