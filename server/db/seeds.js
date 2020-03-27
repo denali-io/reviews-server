@@ -123,7 +123,7 @@ const configureDB = () => {
       for (let restaurantId = 1; restaurantId < 101; restaurantId++) {
         // create user collection to prevent repeats
         const usersCheckedIn = [];
-        const numOfReviews = Math.floor(Math.random() * 110) + 27;// getNumOfReviews()
+        const numOfReviews = 100;// getNumOfReviews()
         for (let i = 0; i < numOfReviews; i++) {
           // generate a fake userId between 1 & 2000
           const currentUser = getNewUserId();

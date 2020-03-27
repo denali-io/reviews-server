@@ -7,6 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "concurrently \"npm run seed\" \"npm run server-dev\"",
     "populate": "node ./server/db/seeds",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -w",
@@ -21,6 +22,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
