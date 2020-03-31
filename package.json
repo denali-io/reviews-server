@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run seed\" \"npm run server-dev\"",
+    "start": "npm run server-dev",
     "populate": "node ./server/db/seeds",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -w",

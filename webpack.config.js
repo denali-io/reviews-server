@@ -5,7 +5,7 @@ const PUBLIC_DIR = path.join(__dirname, 'client', 'public');
 
 module.exports = {
   mode: 'development',
-  entry: path.join(SRC_DIR, 'index.jsx'),
+  entry: path.join(SRC_DIR, 'Index.jsx'),
   output: {
     filename: 'bundle.js',
     path: PUBLIC_DIR,

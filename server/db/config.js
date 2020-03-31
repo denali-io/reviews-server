@@ -1,9 +1,8 @@
 
 module.exports = {
-  // is host necessary???
-  host: 'localhost',
+
+  host: "172.17.0.2",
   user: 'root', // INSERT MYSQL CREDENTIALS HERE,
-  password: '12345', // INSERT MYSQL PASSWORD HERE,
-  // CREATE DATABASE "sixthSquawk"
+  password: 'newpassword', // INSERT MYSQL PASSWORD HERE,
   database: 'testSquawk',
 };
